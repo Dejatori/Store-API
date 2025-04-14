@@ -1,0 +1,157 @@
+\indexentry{module@\spxentry{module}!storeapi.main@\spxentry{storeapi.main}|hyperpage}{4}
+\indexentry{storeapi.main@\spxentry{storeapi.main}!module@\spxentry{module}|hyperpage}{4}
+\indexentry{custom\_http\_exception\_handler() (in module storeapi.main)@\spxentry{custom\_http\_exception\_handler()}\spxextra{in module storeapi.main}|hyperpage}{4}
+\indexentry{lifespan() (in module storeapi.main)@\spxentry{lifespan()}\spxextra{in module storeapi.main}|hyperpage}{4}
+\indexentry{module@\spxentry{module}!storeapi.database@\spxentry{storeapi.database}|hyperpage}{8}
+\indexentry{storeapi.database@\spxentry{storeapi.database}!module@\spxentry{module}|hyperpage}{8}
+\indexentry{module@\spxentry{module}!storeapi.config@\spxentry{storeapi.config}|hyperpage}{9}
+\indexentry{storeapi.config@\spxentry{storeapi.config}!module@\spxentry{module}|hyperpage}{9}
+\indexentry{BaseConfig (class in storeapi.config)@\spxentry{BaseConfig}\spxextra{class in storeapi.config}|hyperpage}{9}
+\indexentry{ENV\_STATE (storeapi.config.BaseConfig attribute)@\spxentry{ENV\_STATE}\spxextra{storeapi.config.BaseConfig attribute}|hyperpage}{9}
+\indexentry{model\_config (storeapi.config.BaseConfig attribute)@\spxentry{model\_config}\spxextra{storeapi.config.BaseConfig attribute}|hyperpage}{9}
+\indexentry{DevConfig (class in storeapi.config)@\spxentry{DevConfig}\spxextra{class in storeapi.config}|hyperpage}{9}
+\indexentry{model\_config (storeapi.config.DevConfig attribute)@\spxentry{model\_config}\spxextra{storeapi.config.DevConfig attribute}|hyperpage}{10}
+\indexentry{GlobalConfig (class in storeapi.config)@\spxentry{GlobalConfig}\spxextra{class in storeapi.config}|hyperpage}{10}
+\indexentry{B2\_APPLICATION\_KEY (storeapi.config.GlobalConfig attribute)@\spxentry{B2\_APPLICATION\_KEY}\spxextra{storeapi.config.GlobalConfig attribute}|hyperpage}{11}
+\indexentry{B2\_BUCKET\_NAME (storeapi.config.GlobalConfig attribute)@\spxentry{B2\_BUCKET\_NAME}\spxextra{storeapi.config.GlobalConfig attribute}|hyperpage}{11}
+\indexentry{B2\_KEY\_ID (storeapi.config.GlobalConfig attribute)@\spxentry{B2\_KEY\_ID}\spxextra{storeapi.config.GlobalConfig attribute}|hyperpage}{11}
+\indexentry{CELERY\_BROKER\_URL (storeapi.config.GlobalConfig attribute)@\spxentry{CELERY\_BROKER\_URL}\spxextra{storeapi.config.GlobalConfig attribute}|hyperpage}{11}
+\indexentry{CELERY\_RESULT\_BACKEND (storeapi.config.GlobalConfig attribute)@\spxentry{CELERY\_RESULT\_BACKEND}\spxextra{storeapi.config.GlobalConfig attribute}|hyperpage}{11}
+\indexentry{DATABASE\_URL (storeapi.config.GlobalConfig attribute)@\spxentry{DATABASE\_URL}\spxextra{storeapi.config.GlobalConfig attribute}|hyperpage}{11}
+\indexentry{DB\_FORCE\_ROLL\_BACK (storeapi.config.GlobalConfig attribute)@\spxentry{DB\_FORCE\_ROLL\_BACK}\spxextra{storeapi.config.GlobalConfig attribute}|hyperpage}{11}
+\indexentry{LOGTAIL\_API\_KEY (storeapi.config.GlobalConfig attribute)@\spxentry{LOGTAIL\_API\_KEY}\spxextra{storeapi.config.GlobalConfig attribute}|hyperpage}{11}
+\indexentry{LOGTAIL\_INGESTING\_HOST (storeapi.config.GlobalConfig attribute)@\spxentry{LOGTAIL\_INGESTING\_HOST}\spxextra{storeapi.config.GlobalConfig attribute}|hyperpage}{11}
+\indexentry{MAILGUN\_API\_KEY (storeapi.config.GlobalConfig attribute)@\spxentry{MAILGUN\_API\_KEY}\spxextra{storeapi.config.GlobalConfig attribute}|hyperpage}{11}
+\indexentry{MAILGUN\_DOMAIN (storeapi.config.GlobalConfig attribute)@\spxentry{MAILGUN\_DOMAIN}\spxextra{storeapi.config.GlobalConfig attribute}|hyperpage}{11}
+\indexentry{model\_config (storeapi.config.GlobalConfig attribute)@\spxentry{model\_config}\spxextra{storeapi.config.GlobalConfig attribute}|hyperpage}{11}
+\indexentry{ProdConfig (class in storeapi.config)@\spxentry{ProdConfig}\spxextra{class in storeapi.config}|hyperpage}{12}
+\indexentry{model\_config (storeapi.config.ProdConfig attribute)@\spxentry{model\_config}\spxextra{storeapi.config.ProdConfig attribute}|hyperpage}{12}
+\indexentry{TestConfig (class in storeapi.config)@\spxentry{TestConfig}\spxextra{class in storeapi.config}|hyperpage}{13}
+\indexentry{DATABASE\_URL (storeapi.config.TestConfig attribute)@\spxentry{DATABASE\_URL}\spxextra{storeapi.config.TestConfig attribute}|hyperpage}{13}
+\indexentry{DB\_FORCE\_ROLL\_BACK (storeapi.config.TestConfig attribute)@\spxentry{DB\_FORCE\_ROLL\_BACK}\spxextra{storeapi.config.TestConfig attribute}|hyperpage}{13}
+\indexentry{model\_config (storeapi.config.TestConfig attribute)@\spxentry{model\_config}\spxextra{storeapi.config.TestConfig attribute}|hyperpage}{13}
+\indexentry{get\_config() (in module storeapi.config)@\spxentry{get\_config()}\spxextra{in module storeapi.config}|hyperpage}{13}
+\indexentry{module@\spxentry{module}!storeapi.logging\_conf@\spxentry{storeapi.logging\_conf}|hyperpage}{14}
+\indexentry{storeapi.logging\_conf@\spxentry{storeapi.logging\_conf}!module@\spxentry{module}|hyperpage}{14}
+\indexentry{EmailObfuscationFilter (class in storeapi.logging\_conf)@\spxentry{EmailObfuscationFilter}\spxextra{class in storeapi.logging\_conf}|hyperpage}{14}
+\indexentry{filter() (storeapi.logging\_conf.EmailObfuscationFilter method)@\spxentry{filter()}\spxextra{storeapi.logging\_conf.EmailObfuscationFilter method}|hyperpage}{14}
+\indexentry{configure\_logging() (in module storeapi.logging\_conf)@\spxentry{configure\_logging()}\spxextra{in module storeapi.logging\_conf}|hyperpage}{14}
+\indexentry{obfuscated() (in module storeapi.logging\_conf)@\spxentry{obfuscated()}\spxextra{in module storeapi.logging\_conf}|hyperpage}{14}
+\indexentry{module@\spxentry{module}!storeapi.security@\spxentry{storeapi.security}|hyperpage}{15}
+\indexentry{storeapi.security@\spxentry{storeapi.security}!module@\spxentry{module}|hyperpage}{15}
+\indexentry{access\_token\_expire\_minutes() (in module storeapi.security)@\spxentry{access\_token\_expire\_minutes()}\spxextra{in module storeapi.security}|hyperpage}{15}
+\indexentry{authenticate\_user() (in module storeapi.security)@\spxentry{authenticate\_user()}\spxextra{in module storeapi.security}|hyperpage}{15}
+\indexentry{confirm\_token\_expire\_minutes() (in module storeapi.security)@\spxentry{confirm\_token\_expire\_minutes()}\spxextra{in module storeapi.security}|hyperpage}{15}
+\indexentry{create\_access\_token() (in module storeapi.security)@\spxentry{create\_access\_token()}\spxextra{in module storeapi.security}|hyperpage}{15}
+\indexentry{create\_confirmation\_token() (in module storeapi.security)@\spxentry{create\_confirmation\_token()}\spxextra{in module storeapi.security}|hyperpage}{16}
+\indexentry{create\_credentials\_exception() (in module storeapi.security)@\spxentry{create\_credentials\_exception()}\spxextra{in module storeapi.security}|hyperpage}{16}
+\indexentry{get\_current\_user() (in module storeapi.security)@\spxentry{get\_current\_user()}\spxextra{in module storeapi.security}|hyperpage}{16}
+\indexentry{get\_password\_hash() (in module storeapi.security)@\spxentry{get\_password\_hash()}\spxextra{in module storeapi.security}|hyperpage}{16}
+\indexentry{get\_subject\_for\_token\_type() (in module storeapi.security)@\spxentry{get\_subject\_for\_token\_type()}\spxextra{in module storeapi.security}|hyperpage}{16}
+\indexentry{get\_user() (in module storeapi.security)@\spxentry{get\_user()}\spxextra{in module storeapi.security}|hyperpage}{17}
+\indexentry{verify\_password() (in module storeapi.security)@\spxentry{verify\_password()}\spxextra{in module storeapi.security}|hyperpage}{17}
+\indexentry{module@\spxentry{module}!storeapi.tasks@\spxentry{storeapi.tasks}|hyperpage}{18}
+\indexentry{storeapi.tasks@\spxentry{storeapi.tasks}!module@\spxentry{module}|hyperpage}{18}
+\indexentry{APIResponseError@\spxentry{APIResponseError}|hyperpage}{18}
+\indexentry{module@\spxentry{module}!storeapi.celery\_app@\spxentry{storeapi.celery\_app}|hyperpage}{18}
+\indexentry{storeapi.celery\_app@\spxentry{storeapi.celery\_app}!module@\spxentry{module}|hyperpage}{18}
+\indexentry{module@\spxentry{module}!storeapi.routers.user@\spxentry{storeapi.routers.user}|hyperpage}{19}
+\indexentry{storeapi.routers.user@\spxentry{storeapi.routers.user}!module@\spxentry{module}|hyperpage}{19}
+\indexentry{confirm\_email() (in module storeapi.routers.user)@\spxentry{confirm\_email()}\spxextra{in module storeapi.routers.user}|hyperpage}{19}
+\indexentry{login() (in module storeapi.routers.user)@\spxentry{login()}\spxextra{in module storeapi.routers.user}|hyperpage}{19}
+\indexentry{register() (in module storeapi.routers.user)@\spxentry{register()}\spxextra{in module storeapi.routers.user}|hyperpage}{19}
+\indexentry{module@\spxentry{module}!storeapi.routers.post@\spxentry{storeapi.routers.post}|hyperpage}{20}
+\indexentry{storeapi.routers.post@\spxentry{storeapi.routers.post}!module@\spxentry{module}|hyperpage}{20}
+\indexentry{PostSorting (class in storeapi.routers.post)@\spxentry{PostSorting}\spxextra{class in storeapi.routers.post}|hyperpage}{20}
+\indexentry{MOST\_LIKES (storeapi.routers.post.PostSorting attribute)@\spxentry{MOST\_LIKES}\spxextra{storeapi.routers.post.PostSorting attribute}|hyperpage}{20}
+\indexentry{NEW (storeapi.routers.post.PostSorting attribute)@\spxentry{NEW}\spxextra{storeapi.routers.post.PostSorting attribute}|hyperpage}{20}
+\indexentry{OLD (storeapi.routers.post.PostSorting attribute)@\spxentry{OLD}\spxextra{storeapi.routers.post.PostSorting attribute}|hyperpage}{20}
+\indexentry{create\_comment() (in module storeapi.routers.post)@\spxentry{create\_comment()}\spxextra{in module storeapi.routers.post}|hyperpage}{20}
+\indexentry{create\_post() (in module storeapi.routers.post)@\spxentry{create\_post()}\spxextra{in module storeapi.routers.post}|hyperpage}{20}
+\indexentry{find\_post() (in module storeapi.routers.post)@\spxentry{find\_post()}\spxextra{in module storeapi.routers.post}|hyperpage}{20}
+\indexentry{get\_all\_posts() (in module storeapi.routers.post)@\spxentry{get\_all\_posts()}\spxextra{in module storeapi.routers.post}|hyperpage}{20}
+\indexentry{get\_comments\_on\_post() (in module storeapi.routers.post)@\spxentry{get\_comments\_on\_post()}\spxextra{in module storeapi.routers.post}|hyperpage}{21}
+\indexentry{get\_post\_with\_comments() (in module storeapi.routers.post)@\spxentry{get\_post\_with\_comments()}\spxextra{in module storeapi.routers.post}|hyperpage}{21}
+\indexentry{like\_post() (in module storeapi.routers.post)@\spxentry{like\_post()}\spxextra{in module storeapi.routers.post}|hyperpage}{21}
+\indexentry{module@\spxentry{module}!storeapi.routers.upload@\spxentry{storeapi.routers.upload}|hyperpage}{21}
+\indexentry{storeapi.routers.upload@\spxentry{storeapi.routers.upload}!module@\spxentry{module}|hyperpage}{21}
+\indexentry{upload\_file() (in module storeapi.routers.upload)@\spxentry{upload\_file()}\spxextra{in module storeapi.routers.upload}|hyperpage}{21}
+\indexentry{module@\spxentry{module}!storeapi.tests.conftest@\spxentry{storeapi.tests.conftest}|hyperpage}{26}
+\indexentry{storeapi.tests.conftest@\spxentry{storeapi.tests.conftest}!module@\spxentry{module}|hyperpage}{26}
+\indexentry{anyio\_backend() (in module storeapi.tests.conftest)@\spxentry{anyio\_backend()}\spxextra{in module storeapi.tests.conftest}|hyperpage}{26}
+\indexentry{async\_client\_fixture() (in module storeapi.tests.conftest)@\spxentry{async\_client\_fixture()}\spxextra{in module storeapi.tests.conftest}|hyperpage}{26}
+\indexentry{client\_fixture() (in module storeapi.tests.conftest)@\spxentry{client\_fixture()}\spxextra{in module storeapi.tests.conftest}|hyperpage}{26}
+\indexentry{confirmed\_user\_fixture() (in module storeapi.tests.conftest)@\spxentry{confirmed\_user\_fixture()}\spxextra{in module storeapi.tests.conftest}|hyperpage}{26}
+\indexentry{db() (in module storeapi.tests.conftest)@\spxentry{db()}\spxextra{in module storeapi.tests.conftest}|hyperpage}{26}
+\indexentry{logged\_in\_token\_fixture() (in module storeapi.tests.conftest)@\spxentry{logged\_in\_token\_fixture()}\spxextra{in module storeapi.tests.conftest}|hyperpage}{27}
+\indexentry{mock\_celery\_tasks\_fixture() (in module storeapi.tests.conftest)@\spxentry{mock\_celery\_tasks\_fixture()}\spxextra{in module storeapi.tests.conftest}|hyperpage}{27}
+\indexentry{registered\_user\_fixture() (in module storeapi.tests.conftest)@\spxentry{registered\_user\_fixture()}\spxextra{in module storeapi.tests.conftest}|hyperpage}{27}
+\indexentry{module@\spxentry{module}!storeapi.tests.test\_security@\spxentry{storeapi.tests.test\_security}|hyperpage}{27}
+\indexentry{storeapi.tests.test\_security@\spxentry{storeapi.tests.test\_security}!module@\spxentry{module}|hyperpage}{27}
+\indexentry{test\_access\_token\_expire\_minutes() (in module storeapi.tests.test\_security)@\spxentry{test\_access\_token\_expire\_minutes()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{27}
+\indexentry{test\_authenticate\_user() (in module storeapi.tests.test\_security)@\spxentry{test\_authenticate\_user()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{27}
+\indexentry{test\_authenticate\_user\_not\_found() (in module storeapi.tests.test\_security)@\spxentry{test\_authenticate\_user\_not\_found()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{27}
+\indexentry{test\_authenticate\_user\_wrong\_password() (in module storeapi.tests.test\_security)@\spxentry{test\_authenticate\_user\_wrong\_password()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{28}
+\indexentry{test\_confirm\_token\_expire\_minutes() (in module storeapi.tests.test\_security)@\spxentry{test\_confirm\_token\_expire\_minutes()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{28}
+\indexentry{test\_create\_token() (in module storeapi.tests.test\_security)@\spxentry{test\_create\_token()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{28}
+\indexentry{test\_get\_current\_user() (in module storeapi.tests.test\_security)@\spxentry{test\_get\_current\_user()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{28}
+\indexentry{test\_get\_current\_user\_invalid\_token() (in module storeapi.tests.test\_security)@\spxentry{test\_get\_current\_user\_invalid\_token()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{28}
+\indexentry{test\_get\_current\_user\_wrong\_type\_token() (in module storeapi.tests.test\_security)@\spxentry{test\_get\_current\_user\_wrong\_type\_token()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{28}
+\indexentry{test\_get\_subject\_for\_token\_expired() (in module storeapi.tests.test\_security)@\spxentry{test\_get\_subject\_for\_token\_expired()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{28}
+\indexentry{test\_get\_subject\_for\_token\_invalid() (in module storeapi.tests.test\_security)@\spxentry{test\_get\_subject\_for\_token\_invalid()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{28}
+\indexentry{test\_get\_subject\_for\_token\_type\_missing\_sub() (in module storeapi.tests.test\_security)@\spxentry{test\_get\_subject\_for\_token\_type\_missing\_sub()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{28}
+\indexentry{test\_get\_subject\_for\_token\_type\_valid\_confirmation() (in module storeapi.tests.test\_security)@\spxentry{test\_get\_subject\_for\_token\_type\_valid\_confirmation()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{28}
+\indexentry{test\_get\_subject\_for\_token\_type\_wrong\_type() (in module storeapi.tests.test\_security)@\spxentry{test\_get\_subject\_for\_token\_type\_wrong\_type()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{28}
+\indexentry{test\_get\_user() (in module storeapi.tests.test\_security)@\spxentry{test\_get\_user()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{28}
+\indexentry{test\_get\_user\_not\_found() (in module storeapi.tests.test\_security)@\spxentry{test\_get\_user\_not\_found()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{29}
+\indexentry{test\_password\_hashes() (in module storeapi.tests.test\_security)@\spxentry{test\_password\_hashes()}\spxextra{in module storeapi.tests.test\_security}|hyperpage}{29}
+\indexentry{module@\spxentry{module}!storeapi.tests.test\_tasks@\spxentry{storeapi.tests.test\_tasks}|hyperpage}{29}
+\indexentry{storeapi.tests.test\_tasks@\spxentry{storeapi.tests.test\_tasks}!module@\spxentry{module}|hyperpage}{29}
+\indexentry{mock\_http\_error\_response() (in module storeapi.tests.test\_tasks)@\spxentry{mock\_http\_error\_response()}\spxextra{in module storeapi.tests.test\_tasks}|hyperpage}{29}
+\indexentry{test\_generate\_image\_and\_add\_to\_post\_api\_error() (in module storeapi.tests.test\_tasks)@\spxentry{test\_generate\_image\_and\_add\_to\_post\_api\_error()}\spxextra{in module storeapi.tests.test\_tasks}|hyperpage}{29}
+\indexentry{test\_generate\_image\_and\_add\_to\_post\_success() (in module storeapi.tests.test\_tasks)@\spxentry{test\_generate\_image\_and\_add\_to\_post\_success()}\spxextra{in module storeapi.tests.test\_tasks}|hyperpage}{29}
+\indexentry{test\_generate\_image\_and\_add\_to\_post\_with\_existing\_image() (in module storeapi.tests.test\_tasks)@\spxentry{test\_generate\_image\_and\_add\_to\_post\_with\_existing\_image()}\spxextra{in module storeapi.tests.test\_tasks}|hyperpage}{29}
+\indexentry{test\_generate\_image\_api\_success() (in module storeapi.tests.test\_tasks)@\spxentry{test\_generate\_image\_api\_success()}\spxextra{in module storeapi.tests.test\_tasks}|hyperpage}{29}
+\indexentry{test\_send\_simple\_email() (in module storeapi.tests.test\_tasks)@\spxentry{test\_send\_simple\_email()}\spxextra{in module storeapi.tests.test\_tasks}|hyperpage}{29}
+\indexentry{test\_send\_simple\_email\_api\_error() (in module storeapi.tests.test\_tasks)@\spxentry{test\_send\_simple\_email\_api\_error()}\spxextra{in module storeapi.tests.test\_tasks}|hyperpage}{29}
+\indexentry{test\_send\_user\_registration\_email() (in module storeapi.tests.test\_tasks)@\spxentry{test\_send\_user\_registration\_email()}\spxextra{in module storeapi.tests.test\_tasks}|hyperpage}{29}
+\indexentry{module@\spxentry{module}!storeapi.tests.routers.test\_posts@\spxentry{storeapi.tests.routers.test\_posts}|hyperpage}{30}
+\indexentry{storeapi.tests.routers.test\_posts@\spxentry{storeapi.tests.routers.test\_posts}!module@\spxentry{module}|hyperpage}{30}
+\indexentry{create\_comment() (in module storeapi.tests.routers.test\_posts)@\spxentry{create\_comment()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{30}
+\indexentry{create\_post() (in module storeapi.tests.routers.test\_posts)@\spxentry{create\_post()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{30}
+\indexentry{created\_comment\_fixture() (in module storeapi.tests.routers.test\_posts)@\spxentry{created\_comment\_fixture()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{30}
+\indexentry{created\_post\_fixture() (in module storeapi.tests.routers.test\_posts)@\spxentry{created\_post\_fixture()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{30}
+\indexentry{like\_post() (in module storeapi.tests.routers.test\_posts)@\spxentry{like\_post()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{31}
+\indexentry{test\_create\_comment() (in module storeapi.tests.routers.test\_posts)@\spxentry{test\_create\_comment()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{31}
+\indexentry{test\_create\_post() (in module storeapi.tests.routers.test\_posts)@\spxentry{test\_create\_post()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{31}
+\indexentry{test\_create\_post\_expired\_token() (in module storeapi.tests.routers.test\_posts)@\spxentry{test\_create\_post\_expired\_token()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{31}
+\indexentry{test\_create\_post\_missing\_data() (in module storeapi.tests.routers.test\_posts)@\spxentry{test\_create\_post\_missing\_data()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{31}
+\indexentry{test\_create\_post\_with\_prompt() (in module storeapi.tests.routers.test\_posts)@\spxentry{test\_create\_post\_with\_prompt()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{32}
+\indexentry{test\_get\_all\_posts() (in module storeapi.tests.routers.test\_posts)@\spxentry{test\_get\_all\_posts()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{32}
+\indexentry{test\_get\_all\_posts\_sort\_likes() (in module storeapi.tests.routers.test\_posts)@\spxentry{test\_get\_all\_posts\_sort\_likes()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{32}
+\indexentry{test\_get\_all\_posts\_sorting() (in module storeapi.tests.routers.test\_posts)@\spxentry{test\_get\_all\_posts\_sorting()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{32}
+\indexentry{test\_get\_all\_posts\_wrong\_sorting() (in module storeapi.tests.routers.test\_posts)@\spxentry{test\_get\_all\_posts\_wrong\_sorting()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{32}
+\indexentry{test\_get\_comments\_on\_post() (in module storeapi.tests.routers.test\_posts)@\spxentry{test\_get\_comments\_on\_post()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{32}
+\indexentry{test\_get\_comments\_on\_post\_empty() (in module storeapi.tests.routers.test\_posts)@\spxentry{test\_get\_comments\_on\_post\_empty()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{32}
+\indexentry{test\_get\_missing\_post\_with\_comments() (in module storeapi.tests.routers.test\_posts)@\spxentry{test\_get\_missing\_post\_with\_comments()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{33}
+\indexentry{test\_get\_post\_with\_comments() (in module storeapi.tests.routers.test\_posts)@\spxentry{test\_get\_post\_with\_comments()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{33}
+\indexentry{test\_like\_post() (in module storeapi.tests.routers.test\_posts)@\spxentry{test\_like\_post()}\spxextra{in module storeapi.tests.routers.test\_posts}|hyperpage}{33}
+\indexentry{module@\spxentry{module}!storeapi.tests.routers.test\_upload@\spxentry{storeapi.tests.routers.test\_upload}|hyperpage}{33}
+\indexentry{storeapi.tests.routers.test\_upload@\spxentry{storeapi.tests.routers.test\_upload}!module@\spxentry{module}|hyperpage}{33}
+\indexentry{aiofiles\_mock\_open() (in module storeapi.tests.routers.test\_upload)@\spxentry{aiofiles\_mock\_open()}\spxextra{in module storeapi.tests.routers.test\_upload}|hyperpage}{33}
+\indexentry{call\_upload\_endpoint() (in module storeapi.tests.routers.test\_upload)@\spxentry{call\_upload\_endpoint()}\spxextra{in module storeapi.tests.routers.test\_upload}|hyperpage}{33}
+\indexentry{mock\_b2\_upload\_file() (in module storeapi.tests.routers.test\_upload)@\spxentry{mock\_b2\_upload\_file()}\spxextra{in module storeapi.tests.routers.test\_upload}|hyperpage}{33}
+\indexentry{sample\_image() (in module storeapi.tests.routers.test\_upload)@\spxentry{sample\_image()}\spxextra{in module storeapi.tests.routers.test\_upload}|hyperpage}{34}
+\indexentry{test\_temp\_file\_remove\_after\_upload() (in module storeapi.tests.routers.test\_upload)@\spxentry{test\_temp\_file\_remove\_after\_upload()}\spxextra{in module storeapi.tests.routers.test\_upload}|hyperpage}{34}
+\indexentry{test\_upload\_image() (in module storeapi.tests.routers.test\_upload)@\spxentry{test\_upload\_image()}\spxextra{in module storeapi.tests.routers.test\_upload}|hyperpage}{34}
+\indexentry{module@\spxentry{module}!storeapi.tests.routers.test\_user@\spxentry{storeapi.tests.routers.test\_user}|hyperpage}{34}
+\indexentry{storeapi.tests.routers.test\_user@\spxentry{storeapi.tests.routers.test\_user}!module@\spxentry{module}|hyperpage}{34}
+\indexentry{register\_user() (in module storeapi.tests.routers.test\_user)@\spxentry{register\_user()}\spxextra{in module storeapi.tests.routers.test\_user}|hyperpage}{34}
+\indexentry{test\_confirm\_user() (in module storeapi.tests.routers.test\_user)@\spxentry{test\_confirm\_user()}\spxextra{in module storeapi.tests.routers.test\_user}|hyperpage}{34}
+\indexentry{test\_confirm\_user\_expired\_token() (in module storeapi.tests.routers.test\_user)@\spxentry{test\_confirm\_user\_expired\_token()}\spxextra{in module storeapi.tests.routers.test\_user}|hyperpage}{35}
+\indexentry{test\_confirm\_user\_invalid\_token() (in module storeapi.tests.routers.test\_user)@\spxentry{test\_confirm\_user\_invalid\_token()}\spxextra{in module storeapi.tests.routers.test\_user}|hyperpage}{35}
+\indexentry{test\_login\_user() (in module storeapi.tests.routers.test\_user)@\spxentry{test\_login\_user()}\spxextra{in module storeapi.tests.routers.test\_user}|hyperpage}{35}
+\indexentry{test\_login\_user\_not\_confirmed() (in module storeapi.tests.routers.test\_user)@\spxentry{test\_login\_user\_not\_confirmed()}\spxextra{in module storeapi.tests.routers.test\_user}|hyperpage}{35}
+\indexentry{test\_login\_user\_not\_exists() (in module storeapi.tests.routers.test\_user)@\spxentry{test\_login\_user\_not\_exists()}\spxextra{in module storeapi.tests.routers.test\_user}|hyperpage}{35}
+\indexentry{test\_register\_user() (in module storeapi.tests.routers.test\_user)@\spxentry{test\_register\_user()}\spxextra{in module storeapi.tests.routers.test\_user}|hyperpage}{35}
+\indexentry{test\_register\_user\_already\_exists() (in module storeapi.tests.routers.test\_user)@\spxentry{test\_register\_user\_already\_exists()}\spxextra{in module storeapi.tests.routers.test\_user}|hyperpage}{35}

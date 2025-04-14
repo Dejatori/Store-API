@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Routers &mdash; Store API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=55d29ff3" />
+
+  
+    <link rel="canonical" href="/modules/routers.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Models" href="models.html" />
+    <link rel="prev" title="Background Tasks" href="tasks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Store API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Background Tasks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Routers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-storeapi.routers.user">User Router</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.routers.user.confirm_email"><code class="docutils literal notranslate"><span class="pre">confirm_email()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.routers.user.login"><code class="docutils literal notranslate"><span class="pre">login()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.routers.user.register"><code class="docutils literal notranslate"><span class="pre">register()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-storeapi.routers.post">Post Router</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.routers.post.PostSorting"><code class="docutils literal notranslate"><span class="pre">PostSorting</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#storeapi.routers.post.PostSorting.MOST_LIKES"><code class="docutils literal notranslate"><span class="pre">PostSorting.MOST_LIKES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#storeapi.routers.post.PostSorting.NEW"><code class="docutils literal notranslate"><span class="pre">PostSorting.NEW</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#storeapi.routers.post.PostSorting.OLD"><code class="docutils literal notranslate"><span class="pre">PostSorting.OLD</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.routers.post.create_comment"><code class="docutils literal notranslate"><span class="pre">create_comment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.routers.post.create_post"><code class="docutils literal notranslate"><span class="pre">create_post()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.routers.post.find_post"><code class="docutils literal notranslate"><span class="pre">find_post()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.routers.post.get_all_posts"><code class="docutils literal notranslate"><span class="pre">get_all_posts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.routers.post.get_comments_on_post"><code class="docutils literal notranslate"><span class="pre">get_comments_on_post()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.routers.post.get_post_with_comments"><code class="docutils literal notranslate"><span class="pre">get_post_with_comments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.routers.post.like_post"><code class="docutils literal notranslate"><span class="pre">like_post()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-storeapi.routers.upload">Upload Router</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.routers.upload.upload_file"><code class="docutils literal notranslate"><span class="pre">upload_file()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libs.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">API Tests</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Store API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Routers</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com///blob/modules/routers.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-routers">
+<h1>API Routers<a class="headerlink" href="#api-routers" title="Link to this heading"></a></h1>
+<section id="module-storeapi.routers.user">
+<span id="user-router"></span><h2>User Router<a class="headerlink" href="#module-storeapi.routers.user" title="Link to this heading"></a></h2>
+<p>User router module for the Store API application.
+Handles user registration, authentication, and email confirmation.
+Provides endpoints for creating user accounts and managing user sessions.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.routers.user.confirm_email">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.routers.user.</span></span><span class="sig-name descname"><span class="pre">confirm_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/routers/user.html#confirm_email"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.routers.user.confirm_email" title="Link to this definition"></a></dt>
+<dd><p>Confirm a user’s email address using the provided token.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>token</strong> – Email confirmation token sent to the user</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>JSON response with confirmation status message</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>HTTPException</strong> – If token is invalid (handled by get_subject_for_token_type)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.routers.user.login">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.routers.user.</span></span><span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">form_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">OAuth2PasswordRequestForm</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/routers/user.html#login"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.routers.user.login" title="Link to this definition"></a></dt>
+<dd><p>Authenticate a user and provide an access token.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>form_data</strong> – OAuth2 form containing username (email) and password</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>JSON response with access token and token type</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>HTTPException</strong> – If authentication fails (handled by authenticate_user)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.routers.user.register">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.routers.user.</span></span><span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">UserIn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/routers/user.html#register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.routers.user.register" title="Link to this definition"></a></dt>
+<dd><p>Register a new user in the system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user</strong> – User data including email and password</p></li>
+<li><p><strong>request</strong> – FastAPI request object to generate confirmation URL</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>JSON response with registration confirmation message</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>HTTPException</strong> – If a user with the provided email already exists</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-storeapi.routers.post">
+<span id="post-router"></span><h2>Post Router<a class="headerlink" href="#module-storeapi.routers.post" title="Link to this heading"></a></h2>
+<p>Post router module for the Store API application.
+Handles all HTTP requests related to posts, comments, and likes.
+Provides endpoints for creating, retrieving, and interacting with user posts.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="storeapi.routers.post.PostSorting">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.routers.post.</span></span><span class="sig-name descname"><span class="pre">PostSorting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/routers/post.html#PostSorting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.routers.post.PostSorting" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enumeration for post sorting options.
+Defines the available sorting mechanisms for post listings.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="storeapi.routers.post.PostSorting.MOST_LIKES">
+<span class="sig-name descname"><span class="pre">MOST_LIKES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'most_likes'</span></em><a class="headerlink" href="#storeapi.routers.post.PostSorting.MOST_LIKES" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="storeapi.routers.post.PostSorting.NEW">
+<span class="sig-name descname"><span class="pre">NEW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'new'</span></em><a class="headerlink" href="#storeapi.routers.post.PostSorting.NEW" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="storeapi.routers.post.PostSorting.OLD">
+<span class="sig-name descname"><span class="pre">OLD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'old'</span></em><a class="headerlink" href="#storeapi.routers.post.PostSorting.OLD" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.routers.post.create_comment">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.routers.post.</span></span><span class="sig-name descname"><span class="pre">create_comment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">CommentIn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">User</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/routers/post.html#create_comment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.routers.post.create_comment" title="Link to this definition"></a></dt>
+<dd><p>Create a new comment on a post.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>comment</strong> – The comment content and post ID</p></li>
+<li><p><strong>current_user</strong> – The authenticated user making the comment</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created comment data including the new ID</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>HTTPException</strong> – If the post doesn’t exist</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.routers.post.create_post">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.routers.post.</span></span><span class="sig-name descname"><span class="pre">create_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">post</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">UserPostIn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">User</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prompt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/routers/post.html#create_post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.routers.post.create_post" title="Link to this definition"></a></dt>
+<dd><p>Create a new post with optional image generation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>post</strong> – The post content to create</p></li>
+<li><p><strong>current_user</strong> – The authenticated user making the request</p></li>
+<li><p><strong>request</strong> – The FastAPI request object</p></li>
+<li><p><strong>prompt</strong> – Optional text prompt for image generation</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created post data including the new ID</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.routers.post.find_post">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.routers.post.</span></span><span class="sig-name descname"><span class="pre">find_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">post_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/routers/post.html#find_post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.routers.post.find_post" title="Link to this definition"></a></dt>
+<dd><p>Find a post by its ID in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>post_id</strong> – The ID of the post to find</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The post record if found, None otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.routers.post.get_all_posts">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.routers.post.</span></span><span class="sig-name descname"><span class="pre">get_all_posts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sorting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#storeapi.routers.post.PostSorting" title="storeapi.routers.post.PostSorting"><span class="pre">PostSorting</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">PostSorting.NEW</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/routers/post.html#get_all_posts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.routers.post.get_all_posts" title="Link to this definition"></a></dt>
+<dd><p>Get all posts with optional sorting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sorting</strong> – The sorting method to use (new, old, or most_likes)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of posts with like counts, sorted according to the specified criteria</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.routers.post.get_comments_on_post">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.routers.post.</span></span><span class="sig-name descname"><span class="pre">get_comments_on_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">post_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/routers/post.html#get_comments_on_post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.routers.post.get_comments_on_post" title="Link to this definition"></a></dt>
+<dd><p>Get all comments for a specific post.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>post_id</strong> – The ID of the post to retrieve comments for</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of comments on the specified post</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.routers.post.get_post_with_comments">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.routers.post.</span></span><span class="sig-name descname"><span class="pre">get_post_with_comments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">post_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/routers/post.html#get_post_with_comments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.routers.post.get_post_with_comments" title="Link to this definition"></a></dt>
+<dd><p>Get a post and all its comments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>post_id</strong> – The ID of the post to retrieve</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The post with its like count and all comments</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>HTTPException</strong> – If the post doesn’t exist</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.routers.post.like_post">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.routers.post.</span></span><span class="sig-name descname"><span class="pre">like_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">post_like</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PostLikeIn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">User</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/routers/post.html#like_post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.routers.post.like_post" title="Link to this definition"></a></dt>
+<dd><p>Like a post.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>post_like</strong> – The post ID to like</p></li>
+<li><p><strong>current_user</strong> – The authenticated user performing the like action</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created like data including the new ID</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>HTTPException</strong> – If the post doesn’t exist</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-storeapi.routers.upload">
+<span id="upload-router"></span><h2>Upload Router<a class="headerlink" href="#module-storeapi.routers.upload" title="Link to this heading"></a></h2>
+<p>Upload router module for the Store API application.
+Handles file uploads from clients, processes files in chunks,
+and uploads them to Backblaze B2 cloud storage.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.routers.upload.upload_file">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.routers.upload.</span></span><span class="sig-name descname"><span class="pre">upload_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">UploadFile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/routers/upload.html#upload_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.routers.upload.upload_file" title="Link to this definition"></a></dt>
+<dd><p>Process an uploaded file in chunks and store it in B2 cloud storage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file</strong> – The uploaded file from the client</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary with upload confirmation and file URL</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>HTTPException</strong> – If there’s an error during the file upload process</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tasks.html" class="btn btn-neutral float-left" title="Background Tasks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="models.html" class="btn btn-neutral float-right" title="Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, David Toscano.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

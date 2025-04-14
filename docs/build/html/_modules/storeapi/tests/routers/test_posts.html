@@ -1,0 +1,600 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>storeapi.tests.routers.test_posts &mdash; Store API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=55d29ff3" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+      <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Store API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/main.html">Main Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/tasks.html">Background Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/routers.html">API Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/libs.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules/tests.html">API Tests</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Store API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">storeapi.tests.routers.test_posts</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for storeapi.tests.routers.test_posts</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Post router test module.</span>
+<span class="sd">Tests CRUD operations for posts, comments, and likes in the Store API.</span>
+<span class="sd">Verifies post creation, listing, sorting, commenting, and liking functionality.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">from</span> <span class="nn">httpx</span> <span class="kn">import</span> <span class="n">AsyncClient</span>
+
+<span class="kn">from</span> <span class="nn">storeapi</span> <span class="kn">import</span> <span class="n">security</span>
+
+
+<div class="viewcode-block" id="create_post">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.create_post">[docs]</a>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">create_post</span><span class="p">(</span>
+    <span class="n">body</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span> <span class="n">logged_in_token_fixture</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Helper function to create a post.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        body: Text content of the post</span>
+<span class="sd">        async_client_fixture: HTTP client for making requests</span>
+<span class="sd">        logged_in_token_fixture: Authentication token</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Created post data</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">&quot;/post&quot;</span><span class="p">,</span>
+        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="n">body</span><span class="p">},</span>
+        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">logged_in_token_fixture</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="create_comment">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.create_comment">[docs]</a>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">create_comment</span><span class="p">(</span>
+    <span class="n">body</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">post_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span>
+    <span class="n">logged_in_token_fixture</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Helper function to create a comment on a post.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        body: Text content of the comment</span>
+<span class="sd">        post_id: ID of the post to comment on</span>
+<span class="sd">        async_client_fixture: HTTP client for making requests</span>
+<span class="sd">        logged_in_token_fixture: Authentication token</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Created comment data</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">&quot;/comment&quot;</span><span class="p">,</span>
+        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="n">body</span><span class="p">,</span> <span class="s2">&quot;post_id&quot;</span><span class="p">:</span> <span class="n">post_id</span><span class="p">},</span>
+        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">logged_in_token_fixture</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="like_post">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.like_post">[docs]</a>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">like_post</span><span class="p">(</span>
+    <span class="n">post_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span> <span class="n">logged_in_token_fixture</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Helper function to like a post.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        post_id: ID of the post to like</span>
+<span class="sd">        async_client_fixture: HTTP client for making requests</span>
+<span class="sd">        logged_in_token_fixture: Authentication token</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Like data</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">&quot;/like&quot;</span><span class="p">,</span>
+        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;post_id&quot;</span><span class="p">:</span> <span class="n">post_id</span><span class="p">},</span>
+        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">logged_in_token_fixture</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="created_post_fixture">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.created_post_fixture">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">()</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">created_post_fixture</span><span class="p">(</span>
+    <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span> <span class="n">logged_in_token_fixture</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fixture that creates a test post.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        async_client_fixture: HTTP client for making requests</span>
+<span class="sd">        logged_in_token_fixture: Authentication token</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Created post data</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">create_post</span><span class="p">(</span><span class="s2">&quot;Test Post&quot;</span><span class="p">,</span> <span class="n">async_client_fixture</span><span class="p">,</span> <span class="n">logged_in_token_fixture</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="created_comment_fixture">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.created_comment_fixture">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">()</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">created_comment_fixture</span><span class="p">(</span>
+    <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span>
+    <span class="n">created_post_fixture</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="n">logged_in_token_fixture</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fixture that creates a test comment on a post.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        async_client_fixture: HTTP client for making requests</span>
+<span class="sd">        created_post_fixture: Post to comment on</span>
+<span class="sd">        logged_in_token_fixture: Authentication token</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Created comment data</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">create_comment</span><span class="p">(</span>
+        <span class="s2">&quot;Test Comment&quot;</span><span class="p">,</span> <span class="n">created_post_fixture</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="n">async_client_fixture</span><span class="p">,</span> <span class="n">logged_in_token_fixture</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="test_create_post">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.test_create_post">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_create_post</span><span class="p">(</span>
+    <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span>
+    <span class="n">confirmed_user_fixture</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="n">logged_in_token_fixture</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test creating a new post.</span>
+
+<span class="sd">    Verifies that a post can be created and the response contains expected fields.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="s2">&quot;Test Post&quot;</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">&quot;/post&quot;</span><span class="p">,</span>
+        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="n">body</span><span class="p">},</span>
+        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">logged_in_token_fixture</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+    <span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span>
+    <span class="k">assert</span> <span class="p">{</span>
+               <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+               <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="n">body</span><span class="p">,</span>
+               <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="n">confirmed_user_fixture</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
+               <span class="s2">&quot;image_url&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+           <span class="p">}</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="test_create_post_with_prompt">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.test_create_post_with_prompt">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_create_post_with_prompt</span><span class="p">(</span>
+        <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span>
+        <span class="n">logged_in_token_fixture</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">mocker</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test creating a post with an image generation prompt.</span>
+
+<span class="sd">    Verifies that the image generation task is called with the correct parameters.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="s2">&quot;Test Post&quot;</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;A cat&quot;</span>
+
+    <span class="c1"># Mock generate_image_and_add_to_post.delay to verify its call</span>
+    <span class="n">mock_task</span> <span class="o">=</span> <span class="n">mocker</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s2">&quot;storeapi.tasks.generate_image_and_add_to_post.delay&quot;</span><span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">&quot;/post&quot;</span><span class="p">,</span>
+        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="n">body</span><span class="p">},</span>
+        <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;prompt&quot;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">},</span>
+        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">logged_in_token_fixture</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+    <span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span>
+    <span class="k">assert</span> <span class="p">{</span>
+               <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+               <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="n">body</span><span class="p">,</span>
+               <span class="s2">&quot;image_url&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+           <span class="p">}</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+
+    <span class="n">mock_task</span><span class="o">.</span><span class="n">assert_called_once</span><span class="p">()</span>
+    <span class="n">call_args</span> <span class="o">=</span> <span class="n">mock_task</span><span class="o">.</span><span class="n">call_args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="n">call_args</span></div>
+
+
+
+<div class="viewcode-block" id="test_create_post_expired_token">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.test_create_post_expired_token">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_create_post_expired_token</span><span class="p">(</span>
+        <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span> <span class="n">confirmed_user_fixture</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">mocker</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test creating a post with an expired token.</span>
+
+<span class="sd">    Verifies that the request is rejected with a 401 Unauthorized response.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mocker</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s2">&quot;storeapi.security.access_token_expire_minutes&quot;</span><span class="p">,</span> <span class="n">return_value</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">security</span><span class="o">.</span><span class="n">create_access_token</span><span class="p">(</span><span class="n">confirmed_user_fixture</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">&quot;/post&quot;</span><span class="p">,</span>
+        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;Test Post&quot;</span><span class="p">},</span>
+        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+    <span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span>
+    <span class="k">assert</span> <span class="s2">&quot;Token has expired&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;detail&quot;</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="test_create_post_missing_data">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.test_create_post_missing_data">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_create_post_missing_data</span><span class="p">(</span>
+        <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span> <span class="n">logged_in_token_fixture</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test creating a post with missing required data.</span>
+
+<span class="sd">    Verifies that the request is rejected with a 422 Unprocessable Entity response.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">&quot;/post&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{},</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">logged_in_token_fixture</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+    <span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">422</span></div>
+
+
+
+<div class="viewcode-block" id="test_like_post">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.test_like_post">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_like_post</span><span class="p">(</span>
+    <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span>
+    <span class="n">created_post_fixture</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="n">logged_in_token_fixture</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test liking a post.</span>
+
+<span class="sd">    Verifies that a like can be created and the response contains expected fields.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">&quot;/like&quot;</span><span class="p">,</span>
+        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;post_id&quot;</span><span class="p">:</span> <span class="n">created_post_fixture</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]},</span>
+        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">logged_in_token_fixture</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+    <span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span>
+    <span class="k">assert</span> <span class="p">{</span>
+               <span class="s2">&quot;post_id&quot;</span><span class="p">:</span> <span class="n">created_post_fixture</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
+               <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="n">created_post_fixture</span><span class="p">[</span><span class="s2">&quot;user_id&quot;</span><span class="p">],</span>
+           <span class="p">}</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="test_get_all_posts">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.test_get_all_posts">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_get_all_posts</span><span class="p">(</span><span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span> <span class="n">created_post_fixture</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test retrieving all posts.</span>
+
+<span class="sd">    Verifies that all posts can be retrieved and the response includes like counts.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/post&quot;</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span> <span class="o">==</span> <span class="p">[{</span><span class="o">**</span><span class="n">created_post_fixture</span><span class="p">,</span> <span class="s2">&quot;likes&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}]</span></div>
+
+
+
+<div class="viewcode-block" id="test_get_all_posts_sorting">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.test_get_all_posts_sorting">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span>
+    <span class="s2">&quot;sorting, expected_order&quot;</span><span class="p">,</span>
+    <span class="p">[(</span><span class="s2">&quot;new&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="p">(</span><span class="s2">&quot;old&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])],</span>
+<span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_get_all_posts_sorting</span><span class="p">(</span>
+        <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span>
+        <span class="n">logged_in_token_fixture</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">sorting</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">expected_order</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test sorting posts by creation time.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        sorting: Sort direction (&#39;new&#39; or &#39;old&#39;)</span>
+<span class="sd">        expected_order: Expected order of post IDs after sorting</span>
+
+<span class="sd">    Verifies that posts are sorted as expected based on the sorting parameter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">await</span> <span class="n">create_post</span><span class="p">(</span><span class="s2">&quot;Test Post 1&quot;</span><span class="p">,</span> <span class="n">async_client_fixture</span><span class="p">,</span> <span class="n">logged_in_token_fixture</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">create_post</span><span class="p">(</span><span class="s2">&quot;Test Post 2&quot;</span><span class="p">,</span> <span class="n">async_client_fixture</span><span class="p">,</span> <span class="n">logged_in_token_fixture</span><span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/post&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sorting&quot;</span><span class="p">:</span> <span class="n">sorting</span><span class="p">})</span>
+
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">post_id</span> <span class="o">=</span> <span class="p">[</span><span class="n">post</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+
+    <span class="k">assert</span> <span class="n">post_id</span> <span class="o">==</span> <span class="n">expected_order</span></div>
+
+
+
+<div class="viewcode-block" id="test_get_all_posts_sort_likes">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.test_get_all_posts_sort_likes">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_get_all_posts_sort_likes</span><span class="p">(</span>
+        <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span>
+        <span class="n">logged_in_token_fixture</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test sorting posts by like count.</span>
+
+<span class="sd">    Verifies that posts are sorted by most likes when the &#39;most_likes&#39; sorting is specified.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">await</span> <span class="n">create_post</span><span class="p">(</span><span class="s2">&quot;Test Post 1&quot;</span><span class="p">,</span> <span class="n">async_client_fixture</span><span class="p">,</span> <span class="n">logged_in_token_fixture</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">create_post</span><span class="p">(</span><span class="s2">&quot;Test Post 2&quot;</span><span class="p">,</span> <span class="n">async_client_fixture</span><span class="p">,</span> <span class="n">logged_in_token_fixture</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">like_post</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">async_client_fixture</span><span class="p">,</span> <span class="n">logged_in_token_fixture</span><span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/post&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sorting&quot;</span><span class="p">:</span> <span class="s2">&quot;most_likes&quot;</span><span class="p">})</span>
+
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">post_id</span> <span class="o">=</span> <span class="p">[</span><span class="n">post</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+    <span class="n">expected_order</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+    <span class="k">assert</span> <span class="n">post_id</span> <span class="o">==</span> <span class="n">expected_order</span></div>
+
+
+
+<div class="viewcode-block" id="test_get_all_posts_wrong_sorting">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.test_get_all_posts_wrong_sorting">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_get_all_posts_wrong_sorting</span><span class="p">(</span>
+        <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test using an invalid sorting parameter.</span>
+
+<span class="sd">    Verifies that the request is rejected with a 422 Unprocessable Entity response.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/post&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sorting&quot;</span><span class="p">:</span> <span class="s2">&quot;wrong&quot;</span><span class="p">})</span>
+
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">422</span></div>
+
+
+
+<div class="viewcode-block" id="test_create_comment">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.test_create_comment">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_create_comment</span><span class="p">(</span>
+        <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span>
+        <span class="n">created_post_fixture</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+        <span class="n">confirmed_user_fixture</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+        <span class="n">logged_in_token_fixture</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test creating a comment on a post.</span>
+
+<span class="sd">    Verifies that a comment can be created and the response contains expected fields.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="s2">&quot;Test Comment&quot;</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">&quot;/comment&quot;</span><span class="p">,</span>
+        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="n">body</span><span class="p">,</span> <span class="s2">&quot;post_id&quot;</span><span class="p">:</span> <span class="n">created_post_fixture</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]},</span>
+        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">logged_in_token_fixture</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">201</span>
+    <span class="k">assert</span> <span class="p">{</span>
+               <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+               <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="n">body</span><span class="p">,</span>
+               <span class="s2">&quot;post_id&quot;</span><span class="p">:</span> <span class="n">created_post_fixture</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
+               <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="n">confirmed_user_fixture</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span>
+           <span class="p">}</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="test_get_comments_on_post">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.test_get_comments_on_post">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_get_comments_on_post</span><span class="p">(</span>
+    <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span>
+    <span class="n">created_post_fixture</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="n">created_comment_fixture</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test retrieving comments for a specific post.</span>
+
+<span class="sd">    Verifies that all comments for a post can be retrieved.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;/post/</span><span class="si">{</span><span class="n">created_post_fixture</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/comment&quot;</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span> <span class="o">==</span> <span class="p">[</span><span class="n">created_comment_fixture</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="test_get_comments_on_post_empty">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.test_get_comments_on_post_empty">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_get_comments_on_post_empty</span><span class="p">(</span>
+        <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span> <span class="n">created_post_fixture</span><span class="p">:</span> <span class="nb">dict</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test retrieving comments for a post that has no comments.</span>
+
+<span class="sd">    Verifies that an empty list is returned when a post has no comments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;/post/</span><span class="si">{</span><span class="n">created_post_fixture</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/comment&quot;</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span> <span class="o">==</span> <span class="p">[]</span></div>
+
+
+
+<div class="viewcode-block" id="test_get_post_with_comments">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.test_get_post_with_comments">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_get_post_with_comments</span><span class="p">(</span>
+    <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span>
+    <span class="n">created_post_fixture</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="n">created_comment_fixture</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test retrieving a post with its comments.</span>
+
+<span class="sd">    Verifies that a post can be retrieved with its comments and like count.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;/post/</span><span class="si">{</span><span class="n">created_post_fixture</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span> <span class="o">==</span> <span class="p">{</span>
+        <span class="s2">&quot;post&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">**</span><span class="n">created_post_fixture</span><span class="p">,</span> <span class="s2">&quot;likes&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+        <span class="s2">&quot;comments&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">created_comment_fixture</span><span class="p">],</span>
+    <span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="test_get_missing_post_with_comments">
+<a class="viewcode-back" href="../../../../modules/tests.html#storeapi.tests.routers.test_posts.test_get_missing_post_with_comments">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">anyio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_get_missing_post_with_comments</span><span class="p">(</span>
+        <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test retrieving a non-existent post.</span>
+
+<span class="sd">    Verifies that a 404 Not Found response is returned when a post doesn&#39;t exist.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/post/2&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, David Toscano.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

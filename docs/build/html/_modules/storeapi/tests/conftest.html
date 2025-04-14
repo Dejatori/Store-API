@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>storeapi.tests.conftest &mdash; Store API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=55d29ff3" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+      <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Store API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/main.html">Main Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/tasks.html">Background Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/routers.html">API Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/libs.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/tests.html">API Tests</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Store API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">storeapi.tests.conftest</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for storeapi.tests.conftest</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Pytest configuration file for the Store API test suite.</span>
+<span class="sd">Defines fixtures for test client setup, database connections, user management,</span>
+<span class="sd">and mocks for testing the application without external dependencies.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">AsyncGenerator</span><span class="p">,</span> <span class="n">Generator</span>
+
+<span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">from</span> <span class="nn">fastapi.testclient</span> <span class="kn">import</span> <span class="n">TestClient</span>
+<span class="kn">from</span> <span class="nn">httpx</span> <span class="kn">import</span> <span class="n">ASGITransport</span><span class="p">,</span> <span class="n">AsyncClient</span>
+
+<span class="c1"># Set environment to test before importing app modules</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;ENV_STATE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;test&quot;</span>
+
+<span class="c1"># Import app modules after setting environment</span>
+<span class="c1"># pylint: disable=wrong-import-position</span>
+<span class="kn">from</span> <span class="nn">storeapi.database</span> <span class="kn">import</span> <span class="n">database</span><span class="p">,</span> <span class="n">user_table</span>  <span class="c1"># noqa: E402</span>
+<span class="kn">from</span> <span class="nn">storeapi.main</span> <span class="kn">import</span> <span class="n">app</span>  <span class="c1"># noqa: E402</span>
+
+
+<div class="viewcode-block" id="anyio_backend">
+<a class="viewcode-back" href="../../../modules/tests.html#storeapi.tests.conftest.anyio_backend">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;session&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">anyio_backend</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Configure pytest-anyio to use asyncio backend for async tests.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The name of the backend to use</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;asyncio&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="client_fixture">
+<a class="viewcode-back" href="../../../modules/tests.html#storeapi.tests.conftest.client_fixture">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">client_fixture</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a test client for the FastAPI application.</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        TestClient: A FastAPI test client</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">yield</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="db">
+<a class="viewcode-back" href="../../../modules/tests.html#storeapi.tests.conftest.db">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">db</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set up and tear down the database connection for each test.</span>
+<span class="sd">    This fixture runs automatically for all tests.</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        None: Just establishes and closes database connection</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">await</span> <span class="n">database</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+    <span class="k">yield</span>
+    <span class="k">await</span> <span class="n">database</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span></div>
+
+
+
+<span class="c1"># pylint: disable=redefined-outer-name</span>
+<div class="viewcode-block" id="async_client_fixture">
+<a class="viewcode-back" href="../../../modules/tests.html#storeapi.tests.conftest.async_client_fixture">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">()</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">async_client_fixture</span><span class="p">(</span><span class="n">client_fixture</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncGenerator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create an async HTTP client for testing async endpoints.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        client_fixture: The standard test client</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        AsyncClient: An async capable HTTP client</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">AsyncClient</span><span class="p">(</span>
+            <span class="n">transport</span><span class="o">=</span><span class="n">ASGITransport</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="n">app</span><span class="p">),</span> <span class="n">base_url</span><span class="o">=</span><span class="n">client_fixture</span><span class="o">.</span><span class="n">base_url</span>
+    <span class="p">)</span> <span class="k">as</span> <span class="n">ac</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">ac</span></div>
+
+
+
+<div class="viewcode-block" id="registered_user_fixture">
+<a class="viewcode-back" href="../../../modules/tests.html#storeapi.tests.conftest.registered_user_fixture">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">()</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">registered_user_fixture</span><span class="p">(</span><span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a registered but unconfirmed test user.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        async_client_fixture: The async HTTP client</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: User details including email, password and ID</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">user_details</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;test@example.net&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;1234&quot;</span><span class="p">}</span>
+    <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/register&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">user_details</span><span class="p">)</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="n">user_table</span><span class="o">.</span><span class="n">select</span><span class="p">()</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">user_table</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="n">user_details</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">])</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="k">await</span> <span class="n">database</span><span class="o">.</span><span class="n">fetch_one</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+    <span class="n">user_details</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">id</span>
+    <span class="k">return</span> <span class="n">user_details</span></div>
+
+
+
+<div class="viewcode-block" id="confirmed_user_fixture">
+<a class="viewcode-back" href="../../../modules/tests.html#storeapi.tests.conftest.confirmed_user_fixture">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">()</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">confirmed_user_fixture</span><span class="p">(</span><span class="n">registered_user_fixture</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a confirmed test user by updating a registered user&#39;s status.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        registered_user_fixture: The registered user details</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: User details with confirmed status</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">query</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">user_table</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">user_table</span><span class="o">.</span><span class="n">c</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="n">registered_user_fixture</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="n">confirmed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">await</span> <span class="n">database</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">registered_user_fixture</span></div>
+
+
+
+<div class="viewcode-block" id="logged_in_token_fixture">
+<a class="viewcode-back" href="../../../modules/tests.html#storeapi.tests.conftest.logged_in_token_fixture">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">()</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">logged_in_token_fixture</span><span class="p">(</span>
+        <span class="n">async_client_fixture</span><span class="p">:</span> <span class="n">AsyncClient</span><span class="p">,</span> <span class="n">confirmed_user_fixture</span><span class="p">:</span> <span class="nb">dict</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtain an authentication token for a confirmed user.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        async_client_fixture: The async HTTP client</span>
+<span class="sd">        confirmed_user_fixture: The confirmed user details</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Authentication token for the user</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">async_client_fixture</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">&quot;/token&quot;</span><span class="p">,</span>
+        <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="n">confirmed_user_fixture</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">],</span>  <span class="c1"># OAuth2 uses username by convention</span>
+            <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">confirmed_user_fixture</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">],</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;access_token&quot;</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="mock_celery_tasks_fixture">
+<a class="viewcode-back" href="../../../modules/tests.html#storeapi.tests.conftest.mock_celery_tasks_fixture">[docs]</a>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">mock_celery_tasks_fixture</span><span class="p">(</span><span class="n">mocker</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Mock celery tasks to avoid actual execution during tests.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        mocker: pytest-mock fixture</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        MagicMock: The mocked task</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">mocker</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s2">&quot;storeapi.tasks.send_user_registration_email.delay&quot;</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, David Toscano.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

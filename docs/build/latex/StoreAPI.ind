@@ -1,0 +1,314 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter A
+  \item \spxentry{access\_token\_expire\_minutes()}\spxextra{in module storeapi.security}, 
+		\hyperpage{15}
+  \item \spxentry{aiofiles\_mock\_open()}\spxextra{in module storeapi.tests.routers.test\_upload}, 
+		\hyperpage{33}
+  \item \spxentry{anyio\_backend()}\spxextra{in module storeapi.tests.conftest}, \hyperpage{26}
+  \item \spxentry{APIResponseError}, \hyperpage{18}
+  \item \spxentry{async\_client\_fixture()}\spxextra{in module storeapi.tests.conftest}, 
+		\hyperpage{26}
+  \item \spxentry{authenticate\_user()}\spxextra{in module storeapi.security}, \hyperpage{15}
+
+  \indexspace
+  \bigletter B
+  \item \spxentry{B2\_APPLICATION\_KEY}\spxextra{storeapi.config.GlobalConfig attribute}, 
+		\hyperpage{11}
+  \item \spxentry{B2\_BUCKET\_NAME}\spxextra{storeapi.config.GlobalConfig attribute}, 
+		\hyperpage{11}
+  \item \spxentry{B2\_KEY\_ID}\spxextra{storeapi.config.GlobalConfig attribute}, \hyperpage{11}
+  \item \spxentry{BaseConfig}\spxextra{class in storeapi.config}, \hyperpage{9}
+
+  \indexspace
+  \bigletter C
+  \item \spxentry{call\_upload\_endpoint()}\spxextra{in module storeapi.tests.routers.test\_upload}, 
+		\hyperpage{33}
+  \item \spxentry{CELERY\_BROKER\_URL}\spxextra{storeapi.config.GlobalConfig attribute}, 
+		\hyperpage{11}
+  \item \spxentry{CELERY\_RESULT\_BACKEND}\spxextra{storeapi.config.GlobalConfig attribute}, 
+		\hyperpage{11}
+  \item \spxentry{client\_fixture()}\spxextra{in module storeapi.tests.conftest}, \hyperpage{26}
+  \item \spxentry{configure\_logging()}\spxextra{in module storeapi.logging\_conf}, \hyperpage{14}
+  \item \spxentry{confirm\_email()}\spxextra{in module storeapi.routers.user}, \hyperpage{19}
+  \item \spxentry{confirm\_token\_expire\_minutes()}\spxextra{in module storeapi.security}, 
+		\hyperpage{15}
+  \item \spxentry{confirmed\_user\_fixture()}\spxextra{in module storeapi.tests.conftest}, 
+		\hyperpage{26}
+  \item \spxentry{create\_access\_token()}\spxextra{in module storeapi.security}, \hyperpage{15}
+  \item \spxentry{create\_comment()}\spxextra{in module storeapi.routers.post}, \hyperpage{20}
+  \item \spxentry{create\_comment()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{30}
+  \item \spxentry{create\_confirmation\_token()}\spxextra{in module storeapi.security}, 
+		\hyperpage{16}
+  \item \spxentry{create\_credentials\_exception()}\spxextra{in module storeapi.security}, 
+		\hyperpage{16}
+  \item \spxentry{create\_post()}\spxextra{in module storeapi.routers.post}, \hyperpage{20}
+  \item \spxentry{create\_post()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{30}
+  \item \spxentry{created\_comment\_fixture()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{30}
+  \item \spxentry{created\_post\_fixture()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{30}
+  \item \spxentry{custom\_http\_exception\_handler()}\spxextra{in module storeapi.main}, 
+		\hyperpage{4}
+
+  \indexspace
+  \bigletter D
+  \item \spxentry{DATABASE\_URL}\spxextra{storeapi.config.GlobalConfig attribute}, \hyperpage{11}
+  \item \spxentry{DATABASE\_URL}\spxextra{storeapi.config.TestConfig attribute}, \hyperpage{13}
+  \item \spxentry{db()}\spxextra{in module storeapi.tests.conftest}, \hyperpage{26}
+  \item \spxentry{DB\_FORCE\_ROLL\_BACK}\spxextra{storeapi.config.GlobalConfig attribute}, 
+		\hyperpage{11}
+  \item \spxentry{DB\_FORCE\_ROLL\_BACK}\spxextra{storeapi.config.TestConfig attribute}, 
+		\hyperpage{13}
+  \item \spxentry{DevConfig}\spxextra{class in storeapi.config}, \hyperpage{9}
+
+  \indexspace
+  \bigletter E
+  \item \spxentry{EmailObfuscationFilter}\spxextra{class in storeapi.logging\_conf}, \hyperpage{14}
+  \item \spxentry{ENV\_STATE}\spxextra{storeapi.config.BaseConfig attribute}, \hyperpage{9}
+
+  \indexspace
+  \bigletter F
+  \item \spxentry{filter()}\spxextra{storeapi.logging\_conf.EmailObfuscationFilter method}, 
+		\hyperpage{14}
+  \item \spxentry{find\_post()}\spxextra{in module storeapi.routers.post}, \hyperpage{20}
+
+  \indexspace
+  \bigletter G
+  \item \spxentry{get\_all\_posts()}\spxextra{in module storeapi.routers.post}, \hyperpage{20}
+  \item \spxentry{get\_comments\_on\_post()}\spxextra{in module storeapi.routers.post}, 
+		\hyperpage{21}
+  \item \spxentry{get\_config()}\spxextra{in module storeapi.config}, \hyperpage{13}
+  \item \spxentry{get\_current\_user()}\spxextra{in module storeapi.security}, \hyperpage{16}
+  \item \spxentry{get\_password\_hash()}\spxextra{in module storeapi.security}, \hyperpage{16}
+  \item \spxentry{get\_post\_with\_comments()}\spxextra{in module storeapi.routers.post}, 
+		\hyperpage{21}
+  \item \spxentry{get\_subject\_for\_token\_type()}\spxextra{in module storeapi.security}, 
+		\hyperpage{16}
+  \item \spxentry{get\_user()}\spxextra{in module storeapi.security}, \hyperpage{17}
+  \item \spxentry{GlobalConfig}\spxextra{class in storeapi.config}, \hyperpage{10}
+
+  \indexspace
+  \bigletter L
+  \item \spxentry{lifespan()}\spxextra{in module storeapi.main}, \hyperpage{4}
+  \item \spxentry{like\_post()}\spxextra{in module storeapi.routers.post}, \hyperpage{21}
+  \item \spxentry{like\_post()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{31}
+  \item \spxentry{logged\_in\_token\_fixture()}\spxextra{in module storeapi.tests.conftest}, 
+		\hyperpage{27}
+  \item \spxentry{login()}\spxextra{in module storeapi.routers.user}, \hyperpage{19}
+  \item \spxentry{LOGTAIL\_API\_KEY}\spxextra{storeapi.config.GlobalConfig attribute}, 
+		\hyperpage{11}
+  \item \spxentry{LOGTAIL\_INGESTING\_HOST}\spxextra{storeapi.config.GlobalConfig attribute}, 
+		\hyperpage{11}
+
+  \indexspace
+  \bigletter M
+  \item \spxentry{MAILGUN\_API\_KEY}\spxextra{storeapi.config.GlobalConfig attribute}, 
+		\hyperpage{11}
+  \item \spxentry{MAILGUN\_DOMAIN}\spxextra{storeapi.config.GlobalConfig attribute}, \hyperpage{11}
+  \item \spxentry{mock\_b2\_upload\_file()}\spxextra{in module storeapi.tests.routers.test\_upload}, 
+		\hyperpage{33}
+  \item \spxentry{mock\_celery\_tasks\_fixture()}\spxextra{in module storeapi.tests.conftest}, 
+		\hyperpage{27}
+  \item \spxentry{mock\_http\_error\_response()}\spxextra{in module storeapi.tests.test\_tasks}, 
+		\hyperpage{29}
+  \item \spxentry{model\_config}\spxextra{storeapi.config.BaseConfig attribute}, \hyperpage{9}
+  \item \spxentry{model\_config}\spxextra{storeapi.config.DevConfig attribute}, \hyperpage{10}
+  \item \spxentry{model\_config}\spxextra{storeapi.config.GlobalConfig attribute}, \hyperpage{11}
+  \item \spxentry{model\_config}\spxextra{storeapi.config.ProdConfig attribute}, \hyperpage{12}
+  \item \spxentry{model\_config}\spxextra{storeapi.config.TestConfig attribute}, \hyperpage{13}
+  \item \spxentry{module}
+    \subitem \spxentry{storeapi.celery\_app}, \hyperpage{18}
+    \subitem \spxentry{storeapi.config}, \hyperpage{9}
+    \subitem \spxentry{storeapi.database}, \hyperpage{8}
+    \subitem \spxentry{storeapi.logging\_conf}, \hyperpage{14}
+    \subitem \spxentry{storeapi.main}, \hyperpage{4}
+    \subitem \spxentry{storeapi.routers.post}, \hyperpage{20}
+    \subitem \spxentry{storeapi.routers.upload}, \hyperpage{21}
+    \subitem \spxentry{storeapi.routers.user}, \hyperpage{19}
+    \subitem \spxentry{storeapi.security}, \hyperpage{15}
+    \subitem \spxentry{storeapi.tasks}, \hyperpage{18}
+    \subitem \spxentry{storeapi.tests.conftest}, \hyperpage{26}
+    \subitem \spxentry{storeapi.tests.routers.test\_posts}, \hyperpage{30}
+    \subitem \spxentry{storeapi.tests.routers.test\_upload}, \hyperpage{33}
+    \subitem \spxentry{storeapi.tests.routers.test\_user}, \hyperpage{34}
+    \subitem \spxentry{storeapi.tests.test\_security}, \hyperpage{27}
+    \subitem \spxentry{storeapi.tests.test\_tasks}, \hyperpage{29}
+  \item \spxentry{MOST\_LIKES}\spxextra{storeapi.routers.post.PostSorting attribute}, 
+		\hyperpage{20}
+
+  \indexspace
+  \bigletter N
+  \item \spxentry{NEW}\spxextra{storeapi.routers.post.PostSorting attribute}, \hyperpage{20}
+
+  \indexspace
+  \bigletter O
+  \item \spxentry{obfuscated()}\spxextra{in module storeapi.logging\_conf}, \hyperpage{14}
+  \item \spxentry{OLD}\spxextra{storeapi.routers.post.PostSorting attribute}, \hyperpage{20}
+
+  \indexspace
+  \bigletter P
+  \item \spxentry{PostSorting}\spxextra{class in storeapi.routers.post}, \hyperpage{20}
+  \item \spxentry{ProdConfig}\spxextra{class in storeapi.config}, \hyperpage{12}
+
+  \indexspace
+  \bigletter R
+  \item \spxentry{register()}\spxextra{in module storeapi.routers.user}, \hyperpage{19}
+  \item \spxentry{register\_user()}\spxextra{in module storeapi.tests.routers.test\_user}, 
+		\hyperpage{34}
+  \item \spxentry{registered\_user\_fixture()}\spxextra{in module storeapi.tests.conftest}, 
+		\hyperpage{27}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry{sample\_image()}\spxextra{in module storeapi.tests.routers.test\_upload}, 
+		\hyperpage{34}
+  \item \spxentry{storeapi.celery\_app}
+    \subitem \spxentry{module}, \hyperpage{18}
+  \item \spxentry{storeapi.config}
+    \subitem \spxentry{module}, \hyperpage{9}
+  \item \spxentry{storeapi.database}
+    \subitem \spxentry{module}, \hyperpage{8}
+  \item \spxentry{storeapi.logging\_conf}
+    \subitem \spxentry{module}, \hyperpage{14}
+  \item \spxentry{storeapi.main}
+    \subitem \spxentry{module}, \hyperpage{4}
+  \item \spxentry{storeapi.routers.post}
+    \subitem \spxentry{module}, \hyperpage{20}
+  \item \spxentry{storeapi.routers.upload}
+    \subitem \spxentry{module}, \hyperpage{21}
+  \item \spxentry{storeapi.routers.user}
+    \subitem \spxentry{module}, \hyperpage{19}
+  \item \spxentry{storeapi.security}
+    \subitem \spxentry{module}, \hyperpage{15}
+  \item \spxentry{storeapi.tasks}
+    \subitem \spxentry{module}, \hyperpage{18}
+  \item \spxentry{storeapi.tests.conftest}
+    \subitem \spxentry{module}, \hyperpage{26}
+  \item \spxentry{storeapi.tests.routers.test\_posts}
+    \subitem \spxentry{module}, \hyperpage{30}
+  \item \spxentry{storeapi.tests.routers.test\_upload}
+    \subitem \spxentry{module}, \hyperpage{33}
+  \item \spxentry{storeapi.tests.routers.test\_user}
+    \subitem \spxentry{module}, \hyperpage{34}
+  \item \spxentry{storeapi.tests.test\_security}
+    \subitem \spxentry{module}, \hyperpage{27}
+  \item \spxentry{storeapi.tests.test\_tasks}
+    \subitem \spxentry{module}, \hyperpage{29}
+
+  \indexspace
+  \bigletter T
+  \item \spxentry{test\_access\_token\_expire\_minutes()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{27}
+  \item \spxentry{test\_authenticate\_user()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{27}
+  \item \spxentry{test\_authenticate\_user\_not\_found()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{27}
+  \item \spxentry{test\_authenticate\_user\_wrong\_password()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{28}
+  \item \spxentry{test\_confirm\_token\_expire\_minutes()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{28}
+  \item \spxentry{test\_confirm\_user()}\spxextra{in module storeapi.tests.routers.test\_user}, 
+		\hyperpage{34}
+  \item \spxentry{test\_confirm\_user\_expired\_token()}\spxextra{in module storeapi.tests.routers.test\_user}, 
+		\hyperpage{35}
+  \item \spxentry{test\_confirm\_user\_invalid\_token()}\spxextra{in module storeapi.tests.routers.test\_user}, 
+		\hyperpage{35}
+  \item \spxentry{test\_create\_comment()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{31}
+  \item \spxentry{test\_create\_post()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{31}
+  \item \spxentry{test\_create\_post\_expired\_token()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{31}
+  \item \spxentry{test\_create\_post\_missing\_data()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{31}
+  \item \spxentry{test\_create\_post\_with\_prompt()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{32}
+  \item \spxentry{test\_create\_token()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{28}
+  \item \spxentry{test\_generate\_image\_and\_add\_to\_post\_api\_error()}\spxextra{in module storeapi.tests.test\_tasks}, 
+		\hyperpage{29}
+  \item \spxentry{test\_generate\_image\_and\_add\_to\_post\_success()}\spxextra{in module storeapi.tests.test\_tasks}, 
+		\hyperpage{29}
+  \item \spxentry{test\_generate\_image\_and\_add\_to\_post\_with\_existing\_image()}\spxextra{in module storeapi.tests.test\_tasks}, 
+		\hyperpage{29}
+  \item \spxentry{test\_generate\_image\_api\_success()}\spxextra{in module storeapi.tests.test\_tasks}, 
+		\hyperpage{29}
+  \item \spxentry{test\_get\_all\_posts()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{32}
+  \item \spxentry{test\_get\_all\_posts\_sort\_likes()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{32}
+  \item \spxentry{test\_get\_all\_posts\_sorting()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{32}
+  \item \spxentry{test\_get\_all\_posts\_wrong\_sorting()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{32}
+  \item \spxentry{test\_get\_comments\_on\_post()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{32}
+  \item \spxentry{test\_get\_comments\_on\_post\_empty()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{32}
+  \item \spxentry{test\_get\_current\_user()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{28}
+  \item \spxentry{test\_get\_current\_user\_invalid\_token()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{28}
+  \item \spxentry{test\_get\_current\_user\_wrong\_type\_token()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{28}
+  \item \spxentry{test\_get\_missing\_post\_with\_comments()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{33}
+  \item \spxentry{test\_get\_post\_with\_comments()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{33}
+  \item \spxentry{test\_get\_subject\_for\_token\_expired()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{28}
+  \item \spxentry{test\_get\_subject\_for\_token\_invalid()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{28}
+  \item \spxentry{test\_get\_subject\_for\_token\_type\_missing\_sub()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{28}
+  \item \spxentry{test\_get\_subject\_for\_token\_type\_valid\_confirmation()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{28}
+  \item \spxentry{test\_get\_subject\_for\_token\_type\_wrong\_type()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{28}
+  \item \spxentry{test\_get\_user()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{28}
+  \item \spxentry{test\_get\_user\_not\_found()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{29}
+  \item \spxentry{test\_like\_post()}\spxextra{in module storeapi.tests.routers.test\_posts}, 
+		\hyperpage{33}
+  \item \spxentry{test\_login\_user()}\spxextra{in module storeapi.tests.routers.test\_user}, 
+		\hyperpage{35}
+  \item \spxentry{test\_login\_user\_not\_confirmed()}\spxextra{in module storeapi.tests.routers.test\_user}, 
+		\hyperpage{35}
+  \item \spxentry{test\_login\_user\_not\_exists()}\spxextra{in module storeapi.tests.routers.test\_user}, 
+		\hyperpage{35}
+  \item \spxentry{test\_password\_hashes()}\spxextra{in module storeapi.tests.test\_security}, 
+		\hyperpage{29}
+  \item \spxentry{test\_register\_user()}\spxextra{in module storeapi.tests.routers.test\_user}, 
+		\hyperpage{35}
+  \item \spxentry{test\_register\_user\_already\_exists()}\spxextra{in module storeapi.tests.routers.test\_user}, 
+		\hyperpage{35}
+  \item \spxentry{test\_send\_simple\_email()}\spxextra{in module storeapi.tests.test\_tasks}, 
+		\hyperpage{29}
+  \item \spxentry{test\_send\_simple\_email\_api\_error()}\spxextra{in module storeapi.tests.test\_tasks}, 
+		\hyperpage{29}
+  \item \spxentry{test\_send\_user\_registration\_email()}\spxextra{in module storeapi.tests.test\_tasks}, 
+		\hyperpage{29}
+  \item \spxentry{test\_temp\_file\_remove\_after\_upload()}\spxextra{in module storeapi.tests.routers.test\_upload}, 
+		\hyperpage{34}
+  \item \spxentry{test\_upload\_image()}\spxextra{in module storeapi.tests.routers.test\_upload}, 
+		\hyperpage{34}
+  \item \spxentry{TestConfig}\spxextra{class in storeapi.config}, \hyperpage{13}
+
+  \indexspace
+  \bigletter U
+  \item \spxentry{upload\_file()}\spxextra{in module storeapi.routers.upload}, \hyperpage{21}
+
+  \indexspace
+  \bigletter V
+  \item \spxentry{verify\_password()}\spxextra{in module storeapi.security}, \hyperpage{17}
+
+\end{sphinxtheindex}

@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>storeapi.tests.test_tasks &mdash; Store API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=55d29ff3" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+      <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Store API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/main.html">Main Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/tasks.html">Background Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/routers.html">API Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/libs.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules/tests.html">API Tests</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Store API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">storeapi.tests.test_tasks</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for storeapi.tests.test_tasks</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Task module test suite.</span>
+<span class="sd">Tests email sending, image generation, and task processing functionality</span>
+<span class="sd">for the Store API application&#39;s asynchronous tasks.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">MagicMock</span><span class="p">,</span> <span class="n">patch</span>
+
+<span class="kn">import</span> <span class="nn">httpx</span>
+<span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">from</span> <span class="nn">pytest</span> <span class="kn">import</span> <span class="n">fixture</span>
+
+<span class="kn">from</span> <span class="nn">storeapi.tasks</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">APIResponseError</span><span class="p">,</span>
+    <span class="n">_generate_image_api</span><span class="p">,</span>
+    <span class="n">generate_image_and_add_to_post</span><span class="p">,</span>
+    <span class="n">send_simple_email</span><span class="p">,</span>
+    <span class="n">send_user_registration_email</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="mock_http_error_response">
+<a class="viewcode-back" href="../../../modules/tests.html#storeapi.tests.test_tasks.mock_http_error_response">[docs]</a>
+<span class="nd">@fixture</span>
+<span class="k">def</span> <span class="nf">mock_http_error_response</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fixture that provides a simulated HTTP 500 error response.&quot;&quot;&quot;</span>
+    <span class="n">mock_response</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+    <span class="n">mock_response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="o">.</span><span class="n">side_effect</span> <span class="o">=</span> <span class="n">httpx</span><span class="o">.</span><span class="n">HTTPStatusError</span><span class="p">(</span>
+        <span class="s2">&quot;Error&quot;</span><span class="p">,</span>
+        <span class="n">request</span><span class="o">=</span><span class="n">httpx</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="s2">&quot;//&quot;</span><span class="p">),</span>
+        <span class="n">response</span><span class="o">=</span><span class="n">httpx</span><span class="o">.</span><span class="n">Response</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">httpx</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="s2">&quot;//&quot;</span><span class="p">)),</span>
+    <span class="p">)</span>
+    <span class="n">mock_response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">=</span> <span class="mi">500</span>
+    <span class="k">return</span> <span class="n">mock_response</span></div>
+
+
+
+<div class="viewcode-block" id="test_send_simple_email">
+<a class="viewcode-back" href="../../../modules/tests.html#storeapi.tests.test_tasks.test_send_simple_email">[docs]</a>
+<span class="k">def</span> <span class="nf">test_send_simple_email</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test that send_simple_email works correctly&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s2">&quot;httpx.Client&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">mock_client</span><span class="p">:</span>
+        <span class="n">mock_response</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+        <span class="n">mock_response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">mock_response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">=</span> <span class="mi">200</span>
+
+        <span class="n">mock_client</span><span class="o">.</span><span class="n">return_value</span><span class="o">.</span><span class="fm">__enter__</span><span class="o">.</span><span class="n">return_value</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">mock_response</span>
+        <span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="n">send_simple_email</span><span class="p">(</span><span class="s2">&quot;test@example.net&quot;</span><span class="p">,</span> <span class="s2">&quot;Test Subject&quot;</span><span class="p">,</span> <span class="s2">&quot;Test Body&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">True</span>
+        <span class="n">mock_client</span><span class="o">.</span><span class="n">return_value</span><span class="o">.</span><span class="fm">__enter__</span><span class="o">.</span><span class="n">return_value</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">assert_called_once</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="test_send_simple_email_api_error">
+<a class="viewcode-back" href="../../../modules/tests.html#storeapi.tests.test_tasks.test_send_simple_email_api_error">[docs]</a>
+<span class="k">def</span> <span class="nf">test_send_simple_email_api_error</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test that send_simple_email handles API errors correctly&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s2">&quot;httpx.Client&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">mock_client</span><span class="p">:</span>
+        <span class="n">mock_response</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+        <span class="n">mock_response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="o">.</span><span class="n">side_effect</span> <span class="o">=</span> <span class="n">httpx</span><span class="o">.</span><span class="n">HTTPStatusError</span><span class="p">(</span>
+            <span class="s2">&quot;Error&quot;</span><span class="p">,</span>
+            <span class="n">request</span><span class="o">=</span><span class="n">httpx</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="s2">&quot;//&quot;</span><span class="p">),</span>
+            <span class="n">response</span><span class="o">=</span><span class="n">httpx</span><span class="o">.</span><span class="n">Response</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">httpx</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="s2">&quot;//&quot;</span><span class="p">)),</span>
+        <span class="p">)</span>
+        <span class="n">mock_response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">=</span> <span class="mi">500</span>
+
+        <span class="n">mock_client</span><span class="o">.</span><span class="n">return_value</span><span class="o">.</span><span class="fm">__enter__</span><span class="o">.</span><span class="n">return_value</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">mock_response</span>
+        <span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">pytest</span><span class="o">.</span><span class="n">raises</span><span class="p">(</span><span class="n">APIResponseError</span><span class="p">):</span>
+            <span class="n">send_simple_email</span><span class="p">(</span><span class="s2">&quot;test@example.net&quot;</span><span class="p">,</span> <span class="s2">&quot;Test Subject&quot;</span><span class="p">,</span> <span class="s2">&quot;Test Body&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="test_send_user_registration_email">
+<a class="viewcode-back" href="../../../modules/tests.html#storeapi.tests.test_tasks.test_send_user_registration_email">[docs]</a>
+<span class="k">def</span> <span class="nf">test_send_user_registration_email</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test that send_user_registration_email works correctly&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s2">&quot;storeapi.tasks.send_simple_email&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">mock_send_email</span><span class="p">:</span>
+        <span class="n">mock_send_email</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="n">send_user_registration_email</span><span class="p">(</span>
+            <span class="s2">&quot;test@example.net&quot;</span><span class="p">,</span> <span class="s2">&quot;http://confirm/token&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">mock_send_email</span><span class="o">.</span><span class="n">assert_called_once</span><span class="p">()</span>
+        <span class="n">call_args</span> <span class="o">=</span> <span class="n">mock_send_email</span><span class="o">.</span><span class="n">call_args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">assert</span> <span class="n">call_args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;test@example.net&quot;</span>
+        <span class="k">assert</span> <span class="n">call_args</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Successfully signed up&quot;</span>
+        <span class="k">assert</span> <span class="s2">&quot;Hi test@example.net&quot;</span> <span class="ow">in</span> <span class="n">call_args</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">assert</span> <span class="s2">&quot;http://confirm/token&quot;</span> <span class="ow">in</span> <span class="n">call_args</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">assert</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">True</span></div>
+
+
+
+<div class="viewcode-block" id="test_generate_image_api_success">
+<a class="viewcode-back" href="../../../modules/tests.html#storeapi.tests.test_tasks.test_generate_image_api_success">[docs]</a>
+<span class="k">def</span> <span class="nf">test_generate_image_api_success</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test that verifies _generate_image_api works properly with Pollinations.ai&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s2">&quot;storeapi.config.config&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">mock_config</span><span class="p">:</span>
+        <span class="c1"># Simulate not being in test mode</span>
+        <span class="n">mock_config</span><span class="o">.</span><span class="n">ENV_STATE</span> <span class="o">=</span> <span class="s2">&quot;dev&quot;</span>
+
+        <span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;A cute cat&quot;</span>
+        <span class="n">expected_url</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;https://pollinations.ai/p/</span><span class="si">{</span><span class="n">prompt</span><span class="si">}</span><span class="s2">?width=1024&amp;height=1024&amp;seed=42&amp;model=flux&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># No need to mock HTTP client as we no longer make API calls</span>
+        <span class="c1"># The URL is generated directly</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">_generate_image_api</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;output_url&quot;</span><span class="p">:</span> <span class="n">expected_url</span><span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="test_generate_image_and_add_to_post_success">
+<a class="viewcode-back" href="../../../modules/tests.html#storeapi.tests.test_tasks.test_generate_image_and_add_to_post_success">[docs]</a>
+<span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;storeapi.tasks._generate_image_api&quot;</span><span class="p">)</span>
+<span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;storeapi.tasks.send_simple_email&quot;</span><span class="p">)</span>
+<span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;sqlalchemy.create_engine&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_generate_image_and_add_to_post_success</span><span class="p">(</span>
+        <span class="n">mock_create_engine</span><span class="p">,</span> <span class="n">mock_send_email</span><span class="p">,</span> <span class="n">mock_generate_image</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test that verifies generate_image_and_add_to_post works properly&quot;&quot;&quot;</span>
+    <span class="c1"># Configure mocks</span>
+    <span class="n">mock_response</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;output_url&quot;</span><span class="p">:</span> <span class="p">(</span>
+            <span class="s2">&quot;https://pollinations.ai/p/A</span><span class="si">%20c</span><span class="s2">ute</span><span class="si">%20c</span><span class="s2">at?width=1024&amp;height=1024&amp;seed=42&amp;model=flux&quot;</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">mock_generate_image</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">mock_response</span>
+    <span class="n">mock_send_email</span><span class="o">.</span><span class="n">delay</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Mock for SQLAlchemy engine and connection</span>
+    <span class="n">mock_engine</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+    <span class="n">mock_create_engine</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">mock_engine</span>
+    <span class="n">mock_connection</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+    <span class="n">mock_engine</span><span class="o">.</span><span class="n">begin</span><span class="o">.</span><span class="n">return_value</span><span class="o">.</span><span class="fm">__enter__</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">mock_connection</span>
+    <span class="n">mock_engine</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">return_value</span><span class="o">.</span><span class="fm">__enter__</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">mock_connection</span>
+
+    <span class="c1"># Simulate that the post has no image</span>
+    <span class="n">mock_result</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+    <span class="n">mock_result</span><span class="o">.</span><span class="n">fetchone</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,)</span>
+    <span class="n">mock_connection</span><span class="o">.</span><span class="n">execute</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">mock_result</span>
+
+    <span class="c1"># Custom prompt for the test</span>
+    <span class="n">custom_prompt</span> <span class="o">=</span> <span class="s2">&quot;A cute cat sitting on a chair&quot;</span>
+
+    <span class="c1"># Call the function</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">generate_image_and_add_to_post</span><span class="p">(</span>
+        <span class="s2">&quot;test@example.com&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;posts/1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sqlite:///test.db&quot;</span><span class="p">,</span>
+        <span class="n">custom_prompt</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Assertions</span>
+    <span class="n">mock_generate_image</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span><span class="n">custom_prompt</span><span class="p">)</span>
+    <span class="n">mock_connection</span><span class="o">.</span><span class="n">execute</span><span class="o">.</span><span class="n">assert_called</span><span class="p">()</span>
+    <span class="n">mock_send_email</span><span class="o">.</span><span class="n">delay</span><span class="o">.</span><span class="n">assert_called_once</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;output_url&quot;</span><span class="p">:</span> <span class="n">mock_response</span><span class="p">[</span><span class="s2">&quot;output_url&quot;</span><span class="p">],</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="test_generate_image_and_add_to_post_with_existing_image">
+<a class="viewcode-back" href="../../../modules/tests.html#storeapi.tests.test_tasks.test_generate_image_and_add_to_post_with_existing_image">[docs]</a>
+<span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;storeapi.tasks._generate_image_api&quot;</span><span class="p">)</span>
+<span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;storeapi.tasks.send_simple_email&quot;</span><span class="p">)</span>
+<span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;sqlalchemy.create_engine&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_generate_image_and_add_to_post_with_existing_image</span><span class="p">(</span>
+        <span class="n">mock_create_engine</span><span class="p">,</span> <span class="n">mock_send_email</span><span class="p">,</span> <span class="n">mock_generate_image</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test that verifies if the post already has an image, no new one is generated&quot;&quot;&quot;</span>
+    <span class="c1"># generate_image_api should not be called</span>
+    <span class="n">mock_generate_image</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">mock_send_email</span><span class="o">.</span><span class="n">delay</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Mock for SQLAlchemy engine and connection</span>
+    <span class="n">mock_engine</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+    <span class="n">mock_create_engine</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">mock_engine</span>
+    <span class="n">mock_connection</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+    <span class="n">mock_engine</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">return_value</span><span class="o">.</span><span class="fm">__enter__</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">mock_connection</span>
+
+    <span class="c1"># Simulate that the post already has an image</span>
+    <span class="n">existing_image_url</span> <span class="o">=</span> <span class="s2">&quot;https://example.com/existing-image.jpg&quot;</span>
+    <span class="n">mock_result</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+    <span class="n">mock_result</span><span class="o">.</span><span class="n">fetchone</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">existing_image_url</span><span class="p">,)</span>
+    <span class="n">mock_connection</span><span class="o">.</span><span class="n">execute</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">mock_result</span>
+
+    <span class="c1"># Call the function</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">generate_image_and_add_to_post</span><span class="p">(</span>
+        <span class="s2">&quot;test@example.com&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;posts/1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sqlite:///test.db&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;A cute cat&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Assertions</span>
+    <span class="n">mock_generate_image</span><span class="o">.</span><span class="n">assert_not_called</span><span class="p">()</span>
+    <span class="n">mock_send_email</span><span class="o">.</span><span class="n">delay</span><span class="o">.</span><span class="n">assert_called_once</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;output_url&quot;</span><span class="p">:</span> <span class="n">existing_image_url</span><span class="p">,</span> <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;already_processed&quot;</span><span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="test_generate_image_and_add_to_post_api_error">
+<a class="viewcode-back" href="../../../modules/tests.html#storeapi.tests.test_tasks.test_generate_image_and_add_to_post_api_error">[docs]</a>
+<span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;storeapi.tasks._generate_image_api&quot;</span><span class="p">)</span>
+<span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;storeapi.tasks.send_simple_email&quot;</span><span class="p">)</span>
+<span class="nd">@patch</span><span class="p">(</span><span class="s2">&quot;sqlalchemy.create_engine&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_generate_image_and_add_to_post_api_error</span><span class="p">(</span>
+        <span class="n">mock_create_engine</span><span class="p">,</span> <span class="n">mock_send_email</span><span class="p">,</span> <span class="n">mock_generate_image</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test that verifies API error handling&quot;&quot;&quot;</span>
+    <span class="c1"># Configure mocks</span>
+    <span class="n">mock_generate_image</span><span class="o">.</span><span class="n">side_effect</span> <span class="o">=</span> <span class="n">APIResponseError</span><span class="p">(</span><span class="s2">&quot;API error&quot;</span><span class="p">)</span>
+    <span class="n">mock_send_email</span><span class="o">.</span><span class="n">delay</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Mock for SQLAlchemy engine and connection</span>
+    <span class="n">mock_engine</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+    <span class="n">mock_create_engine</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">mock_engine</span>
+    <span class="n">mock_connection</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+    <span class="n">mock_engine</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">return_value</span><span class="o">.</span><span class="fm">__enter__</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">mock_connection</span>
+
+    <span class="c1"># Simulate that the post has no image</span>
+    <span class="n">mock_result</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+    <span class="n">mock_result</span><span class="o">.</span><span class="n">fetchone</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,)</span>
+    <span class="n">mock_connection</span><span class="o">.</span><span class="n">execute</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">mock_result</span>
+
+    <span class="c1"># Call the function</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">generate_image_and_add_to_post</span><span class="p">(</span>
+        <span class="s2">&quot;test@example.com&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;posts/1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sqlite:///test.db&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;A cute cat&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Assertions</span>
+    <span class="n">mock_generate_image</span><span class="o">.</span><span class="n">assert_called_once</span><span class="p">()</span>
+    <span class="n">call_template</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">&quot;Hi test@example.com! There was an error generating an image for your post. &quot;</span>
+        <span class="s2">&quot;Please try again later.&quot;</span>
+    <span class="p">)</span>
+    <span class="n">mock_send_email</span><span class="o">.</span><span class="n">delay</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span>
+        <span class="s2">&quot;test@example.com&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Error generating image&quot;</span><span class="p">,</span>
+        <span class="n">call_template</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, David Toscano.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

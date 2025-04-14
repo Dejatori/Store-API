@@ -1,0 +1,8 @@
+ruff
+black
+isort
+pytest
+pytest-mock
+pyfakefs
+sphinx
+sphinx_rtd_theme

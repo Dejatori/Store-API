@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Store API Documentation &mdash; Store API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=55d29ff3" />
+
+  
+    <link rel="canonical" href="/index.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction" href="modules/intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Store API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/main.html">Main Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/tasks.html">Background Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/routers.html">API Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/libs.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/tests.html">API Tests</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Store API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Store API Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com///blob/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="store-api-documentation">
+<h1>Store API Documentation<a class="headerlink" href="#store-api-documentation" title="Link to this heading"></a></h1>
+<p>Welcome to the Store API documentation.</p>
+<p>This documentation provides an overview of the Store API, its modules, and how to use it effectively.
+It is designed to help developers understand the structure and functionality of the API, as well as provide guidance on how to extend and customize it for their own needs.
+The Store API is a RESTful API built with FastAPI, designed to manage and serve data for a store application.
+It provides endpoints for user authentication, data management, and background tasks, among other features.</p>
+<p>The API is built using Python and FastAPI, and it is designed to be easy to use and extend.
+The API is structured into several modules, each responsible for a specific aspect of the application.
+The modules are organized to provide a clear separation of concerns, making it easier to maintain and extend the codebase.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules/intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/intro.html#project-architecture">Project Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/intro.html#architecture-diagram">Architecture Diagram</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/main.html">Main Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/main.html#storeapi.main.custom_http_exception_handler"><code class="docutils literal notranslate"><span class="pre">custom_http_exception_handler()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/main.html#storeapi.main.lifespan"><code class="docutils literal notranslate"><span class="pre">lifespan()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/database.html">Database</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/database.html#database-diagram">Database Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/database.html#module-storeapi.database">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/config.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/config.html#configuration-values">Configuration Values</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/config.html#storeapi.config.BaseConfig"><code class="docutils literal notranslate"><span class="pre">BaseConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/config.html#storeapi.config.DevConfig"><code class="docutils literal notranslate"><span class="pre">DevConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/config.html#storeapi.config.GlobalConfig"><code class="docutils literal notranslate"><span class="pre">GlobalConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/config.html#storeapi.config.ProdConfig"><code class="docutils literal notranslate"><span class="pre">ProdConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/config.html#storeapi.config.TestConfig"><code class="docutils literal notranslate"><span class="pre">TestConfig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/config.html#storeapi.config.get_config"><code class="docutils literal notranslate"><span class="pre">get_config()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules/config.html#logging-configuration">Logging Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/config.html#storeapi.logging_conf.EmailObfuscationFilter"><code class="docutils literal notranslate"><span class="pre">EmailObfuscationFilter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/config.html#storeapi.logging_conf.configure_logging"><code class="docutils literal notranslate"><span class="pre">configure_logging()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/config.html#storeapi.logging_conf.obfuscated"><code class="docutils literal notranslate"><span class="pre">obfuscated()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/security.html#storeapi.security.access_token_expire_minutes"><code class="docutils literal notranslate"><span class="pre">access_token_expire_minutes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/security.html#storeapi.security.authenticate_user"><code class="docutils literal notranslate"><span class="pre">authenticate_user()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/security.html#storeapi.security.confirm_token_expire_minutes"><code class="docutils literal notranslate"><span class="pre">confirm_token_expire_minutes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/security.html#storeapi.security.create_access_token"><code class="docutils literal notranslate"><span class="pre">create_access_token()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/security.html#storeapi.security.create_confirmation_token"><code class="docutils literal notranslate"><span class="pre">create_confirmation_token()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/security.html#storeapi.security.create_credentials_exception"><code class="docutils literal notranslate"><span class="pre">create_credentials_exception()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/security.html#storeapi.security.get_current_user"><code class="docutils literal notranslate"><span class="pre">get_current_user()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/security.html#storeapi.security.get_password_hash"><code class="docutils literal notranslate"><span class="pre">get_password_hash()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/security.html#storeapi.security.get_subject_for_token_type"><code class="docutils literal notranslate"><span class="pre">get_subject_for_token_type()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/security.html#storeapi.security.get_user"><code class="docutils literal notranslate"><span class="pre">get_user()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/security.html#storeapi.security.verify_password"><code class="docutils literal notranslate"><span class="pre">verify_password()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/tasks.html">Background Tasks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/tasks.html#storeapi.tasks.APIResponseError"><code class="docutils literal notranslate"><span class="pre">APIResponseError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/tasks.html#module-storeapi.celery_app">Celery Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/routers.html">API Routers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/routers.html#module-storeapi.routers.user">User Router</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/routers.html#storeapi.routers.user.confirm_email"><code class="docutils literal notranslate"><span class="pre">confirm_email()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/routers.html#storeapi.routers.user.login"><code class="docutils literal notranslate"><span class="pre">login()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/routers.html#storeapi.routers.user.register"><code class="docutils literal notranslate"><span class="pre">register()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules/routers.html#module-storeapi.routers.post">Post Router</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/routers.html#storeapi.routers.post.PostSorting"><code class="docutils literal notranslate"><span class="pre">PostSorting</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/routers.html#storeapi.routers.post.create_comment"><code class="docutils literal notranslate"><span class="pre">create_comment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/routers.html#storeapi.routers.post.create_post"><code class="docutils literal notranslate"><span class="pre">create_post()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/routers.html#storeapi.routers.post.find_post"><code class="docutils literal notranslate"><span class="pre">find_post()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/routers.html#storeapi.routers.post.get_all_posts"><code class="docutils literal notranslate"><span class="pre">get_all_posts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/routers.html#storeapi.routers.post.get_comments_on_post"><code class="docutils literal notranslate"><span class="pre">get_comments_on_post()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/routers.html#storeapi.routers.post.get_post_with_comments"><code class="docutils literal notranslate"><span class="pre">get_post_with_comments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/routers.html#storeapi.routers.post.like_post"><code class="docutils literal notranslate"><span class="pre">like_post()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules/routers.html#module-storeapi.routers.upload">Upload Router</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/routers.html#storeapi.routers.upload.upload_file"><code class="docutils literal notranslate"><span class="pre">upload_file()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/models.html">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/models.html#user-models">User Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/models.html#post-models">Post Models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/libs.html">Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/libs.html#b2-cloud-storage">B2 Cloud Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/tests.html">API Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/tests.html#module-storeapi.tests.conftest">Test Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.conftest.anyio_backend"><code class="docutils literal notranslate"><span class="pre">anyio_backend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.conftest.async_client_fixture"><code class="docutils literal notranslate"><span class="pre">async_client_fixture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.conftest.client_fixture"><code class="docutils literal notranslate"><span class="pre">client_fixture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.conftest.confirmed_user_fixture"><code class="docutils literal notranslate"><span class="pre">confirmed_user_fixture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.conftest.db"><code class="docutils literal notranslate"><span class="pre">db()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.conftest.logged_in_token_fixture"><code class="docutils literal notranslate"><span class="pre">logged_in_token_fixture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.conftest.mock_celery_tasks_fixture"><code class="docutils literal notranslate"><span class="pre">mock_celery_tasks_fixture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.conftest.registered_user_fixture"><code class="docutils literal notranslate"><span class="pre">registered_user_fixture()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules/tests.html#module-storeapi.tests.test_security">Security Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_access_token_expire_minutes"><code class="docutils literal notranslate"><span class="pre">test_access_token_expire_minutes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_authenticate_user"><code class="docutils literal notranslate"><span class="pre">test_authenticate_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_authenticate_user_not_found"><code class="docutils literal notranslate"><span class="pre">test_authenticate_user_not_found()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_authenticate_user_wrong_password"><code class="docutils literal notranslate"><span class="pre">test_authenticate_user_wrong_password()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_confirm_token_expire_minutes"><code class="docutils literal notranslate"><span class="pre">test_confirm_token_expire_minutes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_create_token"><code class="docutils literal notranslate"><span class="pre">test_create_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_get_current_user"><code class="docutils literal notranslate"><span class="pre">test_get_current_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_get_current_user_invalid_token"><code class="docutils literal notranslate"><span class="pre">test_get_current_user_invalid_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_get_current_user_wrong_type_token"><code class="docutils literal notranslate"><span class="pre">test_get_current_user_wrong_type_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_get_subject_for_token_expired"><code class="docutils literal notranslate"><span class="pre">test_get_subject_for_token_expired()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_get_subject_for_token_invalid"><code class="docutils literal notranslate"><span class="pre">test_get_subject_for_token_invalid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_get_subject_for_token_type_missing_sub"><code class="docutils literal notranslate"><span class="pre">test_get_subject_for_token_type_missing_sub()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_get_subject_for_token_type_valid_confirmation"><code class="docutils literal notranslate"><span class="pre">test_get_subject_for_token_type_valid_confirmation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_get_subject_for_token_type_wrong_type"><code class="docutils literal notranslate"><span class="pre">test_get_subject_for_token_type_wrong_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_get_user"><code class="docutils literal notranslate"><span class="pre">test_get_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_get_user_not_found"><code class="docutils literal notranslate"><span class="pre">test_get_user_not_found()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_security.test_password_hashes"><code class="docutils literal notranslate"><span class="pre">test_password_hashes()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules/tests.html#module-storeapi.tests.test_tasks">Background Tasks Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_tasks.mock_http_error_response"><code class="docutils literal notranslate"><span class="pre">mock_http_error_response()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_tasks.test_generate_image_and_add_to_post_api_error"><code class="docutils literal notranslate"><span class="pre">test_generate_image_and_add_to_post_api_error()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_tasks.test_generate_image_and_add_to_post_success"><code class="docutils literal notranslate"><span class="pre">test_generate_image_and_add_to_post_success()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_tasks.test_generate_image_and_add_to_post_with_existing_image"><code class="docutils literal notranslate"><span class="pre">test_generate_image_and_add_to_post_with_existing_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_tasks.test_generate_image_api_success"><code class="docutils literal notranslate"><span class="pre">test_generate_image_api_success()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_tasks.test_send_simple_email"><code class="docutils literal notranslate"><span class="pre">test_send_simple_email()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_tasks.test_send_simple_email_api_error"><code class="docutils literal notranslate"><span class="pre">test_send_simple_email_api_error()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.test_tasks.test_send_user_registration_email"><code class="docutils literal notranslate"><span class="pre">test_send_user_registration_email()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules/tests.html#module-storeapi.tests.routers.test_posts">Router Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.create_comment"><code class="docutils literal notranslate"><span class="pre">create_comment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.create_post"><code class="docutils literal notranslate"><span class="pre">create_post()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.created_comment_fixture"><code class="docutils literal notranslate"><span class="pre">created_comment_fixture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.created_post_fixture"><code class="docutils literal notranslate"><span class="pre">created_post_fixture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.like_post"><code class="docutils literal notranslate"><span class="pre">like_post()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.test_create_comment"><code class="docutils literal notranslate"><span class="pre">test_create_comment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.test_create_post"><code class="docutils literal notranslate"><span class="pre">test_create_post()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.test_create_post_expired_token"><code class="docutils literal notranslate"><span class="pre">test_create_post_expired_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.test_create_post_missing_data"><code class="docutils literal notranslate"><span class="pre">test_create_post_missing_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.test_create_post_with_prompt"><code class="docutils literal notranslate"><span class="pre">test_create_post_with_prompt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.test_get_all_posts"><code class="docutils literal notranslate"><span class="pre">test_get_all_posts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.test_get_all_posts_sort_likes"><code class="docutils literal notranslate"><span class="pre">test_get_all_posts_sort_likes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.test_get_all_posts_sorting"><code class="docutils literal notranslate"><span class="pre">test_get_all_posts_sorting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.test_get_all_posts_wrong_sorting"><code class="docutils literal notranslate"><span class="pre">test_get_all_posts_wrong_sorting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.test_get_comments_on_post"><code class="docutils literal notranslate"><span class="pre">test_get_comments_on_post()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.test_get_comments_on_post_empty"><code class="docutils literal notranslate"><span class="pre">test_get_comments_on_post_empty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.test_get_missing_post_with_comments"><code class="docutils literal notranslate"><span class="pre">test_get_missing_post_with_comments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.test_get_post_with_comments"><code class="docutils literal notranslate"><span class="pre">test_get_post_with_comments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_posts.test_like_post"><code class="docutils literal notranslate"><span class="pre">test_like_post()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_upload.aiofiles_mock_open"><code class="docutils literal notranslate"><span class="pre">aiofiles_mock_open()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_upload.call_upload_endpoint"><code class="docutils literal notranslate"><span class="pre">call_upload_endpoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_upload.mock_b2_upload_file"><code class="docutils literal notranslate"><span class="pre">mock_b2_upload_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_upload.sample_image"><code class="docutils literal notranslate"><span class="pre">sample_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_upload.test_temp_file_remove_after_upload"><code class="docutils literal notranslate"><span class="pre">test_temp_file_remove_after_upload()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_upload.test_upload_image"><code class="docutils literal notranslate"><span class="pre">test_upload_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_user.register_user"><code class="docutils literal notranslate"><span class="pre">register_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_user.test_confirm_user"><code class="docutils literal notranslate"><span class="pre">test_confirm_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_user.test_confirm_user_expired_token"><code class="docutils literal notranslate"><span class="pre">test_confirm_user_expired_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_user.test_confirm_user_invalid_token"><code class="docutils literal notranslate"><span class="pre">test_confirm_user_invalid_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_user.test_login_user"><code class="docutils literal notranslate"><span class="pre">test_login_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_user.test_login_user_not_confirmed"><code class="docutils literal notranslate"><span class="pre">test_login_user_not_confirmed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_user.test_login_user_not_exists"><code class="docutils literal notranslate"><span class="pre">test_login_user_not_exists()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_user.test_register_user"><code class="docutils literal notranslate"><span class="pre">test_register_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/tests.html#storeapi.tests.routers.test_user.test_register_user_already_exists"><code class="docutils literal notranslate"><span class="pre">test_register_user_already_exists()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules/intro.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, David Toscano.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,931 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Tests &mdash; Store API  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=55d29ff3" />
+
+  
+    <link rel="canonical" href="/modules/tests.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Libraries" href="libs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Store API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">Main Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Background Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routers.html">API Routers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libs.html">Libraries</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Tests</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-storeapi.tests.conftest">Test Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.conftest.anyio_backend"><code class="docutils literal notranslate"><span class="pre">anyio_backend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.conftest.async_client_fixture"><code class="docutils literal notranslate"><span class="pre">async_client_fixture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.conftest.client_fixture"><code class="docutils literal notranslate"><span class="pre">client_fixture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.conftest.confirmed_user_fixture"><code class="docutils literal notranslate"><span class="pre">confirmed_user_fixture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.conftest.db"><code class="docutils literal notranslate"><span class="pre">db()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.conftest.logged_in_token_fixture"><code class="docutils literal notranslate"><span class="pre">logged_in_token_fixture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.conftest.mock_celery_tasks_fixture"><code class="docutils literal notranslate"><span class="pre">mock_celery_tasks_fixture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.conftest.registered_user_fixture"><code class="docutils literal notranslate"><span class="pre">registered_user_fixture()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-storeapi.tests.test_security">Security Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_access_token_expire_minutes"><code class="docutils literal notranslate"><span class="pre">test_access_token_expire_minutes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_authenticate_user"><code class="docutils literal notranslate"><span class="pre">test_authenticate_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_authenticate_user_not_found"><code class="docutils literal notranslate"><span class="pre">test_authenticate_user_not_found()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_authenticate_user_wrong_password"><code class="docutils literal notranslate"><span class="pre">test_authenticate_user_wrong_password()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_confirm_token_expire_minutes"><code class="docutils literal notranslate"><span class="pre">test_confirm_token_expire_minutes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_create_token"><code class="docutils literal notranslate"><span class="pre">test_create_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_get_current_user"><code class="docutils literal notranslate"><span class="pre">test_get_current_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_get_current_user_invalid_token"><code class="docutils literal notranslate"><span class="pre">test_get_current_user_invalid_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_get_current_user_wrong_type_token"><code class="docutils literal notranslate"><span class="pre">test_get_current_user_wrong_type_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_get_subject_for_token_expired"><code class="docutils literal notranslate"><span class="pre">test_get_subject_for_token_expired()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_get_subject_for_token_invalid"><code class="docutils literal notranslate"><span class="pre">test_get_subject_for_token_invalid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_get_subject_for_token_type_missing_sub"><code class="docutils literal notranslate"><span class="pre">test_get_subject_for_token_type_missing_sub()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_get_subject_for_token_type_valid_confirmation"><code class="docutils literal notranslate"><span class="pre">test_get_subject_for_token_type_valid_confirmation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_get_subject_for_token_type_wrong_type"><code class="docutils literal notranslate"><span class="pre">test_get_subject_for_token_type_wrong_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_get_user"><code class="docutils literal notranslate"><span class="pre">test_get_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_get_user_not_found"><code class="docutils literal notranslate"><span class="pre">test_get_user_not_found()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_security.test_password_hashes"><code class="docutils literal notranslate"><span class="pre">test_password_hashes()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-storeapi.tests.test_tasks">Background Tasks Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_tasks.mock_http_error_response"><code class="docutils literal notranslate"><span class="pre">mock_http_error_response()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_tasks.test_generate_image_and_add_to_post_api_error"><code class="docutils literal notranslate"><span class="pre">test_generate_image_and_add_to_post_api_error()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_tasks.test_generate_image_and_add_to_post_success"><code class="docutils literal notranslate"><span class="pre">test_generate_image_and_add_to_post_success()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_tasks.test_generate_image_and_add_to_post_with_existing_image"><code class="docutils literal notranslate"><span class="pre">test_generate_image_and_add_to_post_with_existing_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_tasks.test_generate_image_api_success"><code class="docutils literal notranslate"><span class="pre">test_generate_image_api_success()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_tasks.test_send_simple_email"><code class="docutils literal notranslate"><span class="pre">test_send_simple_email()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_tasks.test_send_simple_email_api_error"><code class="docutils literal notranslate"><span class="pre">test_send_simple_email_api_error()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.test_tasks.test_send_user_registration_email"><code class="docutils literal notranslate"><span class="pre">test_send_user_registration_email()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-storeapi.tests.routers.test_posts">Router Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.create_comment"><code class="docutils literal notranslate"><span class="pre">create_comment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.create_post"><code class="docutils literal notranslate"><span class="pre">create_post()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.created_comment_fixture"><code class="docutils literal notranslate"><span class="pre">created_comment_fixture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.created_post_fixture"><code class="docutils literal notranslate"><span class="pre">created_post_fixture()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.like_post"><code class="docutils literal notranslate"><span class="pre">like_post()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.test_create_comment"><code class="docutils literal notranslate"><span class="pre">test_create_comment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.test_create_post"><code class="docutils literal notranslate"><span class="pre">test_create_post()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.test_create_post_expired_token"><code class="docutils literal notranslate"><span class="pre">test_create_post_expired_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.test_create_post_missing_data"><code class="docutils literal notranslate"><span class="pre">test_create_post_missing_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.test_create_post_with_prompt"><code class="docutils literal notranslate"><span class="pre">test_create_post_with_prompt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.test_get_all_posts"><code class="docutils literal notranslate"><span class="pre">test_get_all_posts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.test_get_all_posts_sort_likes"><code class="docutils literal notranslate"><span class="pre">test_get_all_posts_sort_likes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.test_get_all_posts_sorting"><code class="docutils literal notranslate"><span class="pre">test_get_all_posts_sorting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.test_get_all_posts_wrong_sorting"><code class="docutils literal notranslate"><span class="pre">test_get_all_posts_wrong_sorting()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.test_get_comments_on_post"><code class="docutils literal notranslate"><span class="pre">test_get_comments_on_post()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.test_get_comments_on_post_empty"><code class="docutils literal notranslate"><span class="pre">test_get_comments_on_post_empty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.test_get_missing_post_with_comments"><code class="docutils literal notranslate"><span class="pre">test_get_missing_post_with_comments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.test_get_post_with_comments"><code class="docutils literal notranslate"><span class="pre">test_get_post_with_comments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_posts.test_like_post"><code class="docutils literal notranslate"><span class="pre">test_like_post()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_upload.aiofiles_mock_open"><code class="docutils literal notranslate"><span class="pre">aiofiles_mock_open()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_upload.call_upload_endpoint"><code class="docutils literal notranslate"><span class="pre">call_upload_endpoint()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_upload.mock_b2_upload_file"><code class="docutils literal notranslate"><span class="pre">mock_b2_upload_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_upload.sample_image"><code class="docutils literal notranslate"><span class="pre">sample_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_upload.test_temp_file_remove_after_upload"><code class="docutils literal notranslate"><span class="pre">test_temp_file_remove_after_upload()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_upload.test_upload_image"><code class="docutils literal notranslate"><span class="pre">test_upload_image()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_user.register_user"><code class="docutils literal notranslate"><span class="pre">register_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_user.test_confirm_user"><code class="docutils literal notranslate"><span class="pre">test_confirm_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_user.test_confirm_user_expired_token"><code class="docutils literal notranslate"><span class="pre">test_confirm_user_expired_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_user.test_confirm_user_invalid_token"><code class="docutils literal notranslate"><span class="pre">test_confirm_user_invalid_token()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_user.test_login_user"><code class="docutils literal notranslate"><span class="pre">test_login_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_user.test_login_user_not_confirmed"><code class="docutils literal notranslate"><span class="pre">test_login_user_not_confirmed()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_user.test_login_user_not_exists"><code class="docutils literal notranslate"><span class="pre">test_login_user_not_exists()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_user.test_register_user"><code class="docutils literal notranslate"><span class="pre">test_register_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storeapi.tests.routers.test_user.test_register_user_already_exists"><code class="docutils literal notranslate"><span class="pre">test_register_user_already_exists()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Store API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Tests</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com///blob/modules/tests.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-tests">
+<h1>API Tests<a class="headerlink" href="#api-tests" title="Link to this heading"></a></h1>
+<p>This module contains tests for the Store API, ensuring that all endpoints and functionalities work as expected.</p>
+<section id="module-storeapi.tests.conftest">
+<span id="test-configuration"></span><h2>Test Configuration<a class="headerlink" href="#module-storeapi.tests.conftest" title="Link to this heading"></a></h2>
+<p>Pytest configuration file for the Store API test suite.
+Defines fixtures for test client setup, database connections, user management,
+and mocks for testing the application without external dependencies.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.conftest.anyio_backend">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.conftest.</span></span><span class="sig-name descname"><span class="pre">anyio_backend</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/conftest.html#anyio_backend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.conftest.anyio_backend" title="Link to this definition"></a></dt>
+<dd><p>Configure pytest-anyio to use asyncio backend for async tests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The name of the backend to use</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.conftest.async_client_fixture">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.conftest.</span></span><span class="sig-name descname"><span class="pre">async_client_fixture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client_fixture</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AsyncGenerator</span></span></span><a class="reference internal" href="../_modules/storeapi/tests/conftest.html#async_client_fixture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.conftest.async_client_fixture" title="Link to this definition"></a></dt>
+<dd><p>Create an async HTTP client for testing async endpoints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>client_fixture</strong> – The standard test client</p>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>AsyncClient</em> – An async capable HTTP client</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.conftest.client_fixture">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.conftest.</span></span><span class="sig-name descname"><span class="pre">client_fixture</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Generator</span></span></span><a class="reference internal" href="../_modules/storeapi/tests/conftest.html#client_fixture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.conftest.client_fixture" title="Link to this definition"></a></dt>
+<dd><p>Create a test client for the FastAPI application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Yields<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>TestClient</em> – A FastAPI test client</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.conftest.confirmed_user_fixture">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.conftest.</span></span><span class="sig-name descname"><span class="pre">confirmed_user_fixture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">registered_user_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/storeapi/tests/conftest.html#confirmed_user_fixture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.conftest.confirmed_user_fixture" title="Link to this definition"></a></dt>
+<dd><p>Create a confirmed test user by updating a registered user’s status.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>registered_user_fixture</strong> – The registered user details</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>User details with confirmed status</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.conftest.db">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.conftest.</span></span><span class="sig-name descname"><span class="pre">db</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">AsyncGenerator</span></span></span><a class="reference internal" href="../_modules/storeapi/tests/conftest.html#db"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.conftest.db" title="Link to this definition"></a></dt>
+<dd><p>Set up and tear down the database connection for each test.
+This fixture runs automatically for all tests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Yields<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>None</em> – Just establishes and closes database connection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.conftest.logged_in_token_fixture">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.conftest.</span></span><span class="sig-name descname"><span class="pre">logged_in_token_fixture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confirmed_user_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/storeapi/tests/conftest.html#logged_in_token_fixture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.conftest.logged_in_token_fixture" title="Link to this definition"></a></dt>
+<dd><p>Obtain an authentication token for a confirmed user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>async_client_fixture</strong> – The async HTTP client</p></li>
+<li><p><strong>confirmed_user_fixture</strong> – The confirmed user details</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Authentication token for the user</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.conftest.mock_celery_tasks_fixture">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.conftest.</span></span><span class="sig-name descname"><span class="pre">mock_celery_tasks_fixture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mocker</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/conftest.html#mock_celery_tasks_fixture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.conftest.mock_celery_tasks_fixture" title="Link to this definition"></a></dt>
+<dd><p>Mock celery tasks to avoid actual execution during tests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mocker</strong> – pytest-mock fixture</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mocked task</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>MagicMock</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.conftest.registered_user_fixture">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.conftest.</span></span><span class="sig-name descname"><span class="pre">registered_user_fixture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/storeapi/tests/conftest.html#registered_user_fixture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.conftest.registered_user_fixture" title="Link to this definition"></a></dt>
+<dd><p>Create a registered but unconfirmed test user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>async_client_fixture</strong> – The async HTTP client</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>User details including email, password and ID</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-storeapi.tests.test_security">
+<span id="security-tests"></span><h2>Security Tests<a class="headerlink" href="#module-storeapi.tests.test_security" title="Link to this heading"></a></h2>
+<p>Security module test suite.
+Tests the functionality of token creation, authentication, password hashing,
+and user validation for the Store API application.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_access_token_expire_minutes">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_access_token_expire_minutes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_access_token_expire_minutes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_access_token_expire_minutes" title="Link to this definition"></a></dt>
+<dd><p>Test that access tokens are set to expire after 30 minutes.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_authenticate_user">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_authenticate_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confirmed_user_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_authenticate_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_authenticate_user" title="Link to this definition"></a></dt>
+<dd><p>Test that a confirmed user can be authenticated with correct credentials.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>confirmed_user_fixture</strong> – Test user data with confirmed status</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_authenticate_user_not_found">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_authenticate_user_not_found</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_authenticate_user_not_found"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_authenticate_user_not_found" title="Link to this definition"></a></dt>
+<dd><p>Test that authentication fails for non-existent users.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_authenticate_user_wrong_password">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_authenticate_user_wrong_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confirmed_user_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_authenticate_user_wrong_password"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_authenticate_user_wrong_password" title="Link to this definition"></a></dt>
+<dd><p>Test that authentication fails with incorrect password.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>confirmed_user_fixture</strong> – Test user data with confirmed status</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_confirm_token_expire_minutes">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_confirm_token_expire_minutes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_confirm_token_expire_minutes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_confirm_token_expire_minutes" title="Link to this definition"></a></dt>
+<dd><p>Test that confirmation tokens are set to expire after 1440 minutes (24 hours).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_create_token">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_create_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">create_token_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_create_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_create_token" title="Link to this definition"></a></dt>
+<dd><p>Test that tokens are created with correct subject and type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>create_token_func</strong> – Function that creates the token</p></li>
+<li><p><strong>token_type</strong> – Expected type of the token</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_get_current_user">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_get_current_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confirmed_user_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_get_current_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_get_current_user" title="Link to this definition"></a></dt>
+<dd><p>Test that current user can be retrieved from a valid token.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>confirmed_user_fixture</strong> – Test user data with confirmed status</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_get_current_user_invalid_token">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_get_current_user_invalid_token</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_get_current_user_invalid_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_get_current_user_invalid_token" title="Link to this definition"></a></dt>
+<dd><p>Test that get_current_user fails with invalid token.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_get_current_user_wrong_type_token">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_get_current_user_wrong_type_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confirmed_user_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_get_current_user_wrong_type_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_get_current_user_wrong_type_token" title="Link to this definition"></a></dt>
+<dd><p>Test that get_current_user fails with wrong token type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>confirmed_user_fixture</strong> – Test user data with confirmed status</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_get_subject_for_token_expired">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_get_subject_for_token_expired</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mocker</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_get_subject_for_token_expired"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_get_subject_for_token_expired" title="Link to this definition"></a></dt>
+<dd><p>Test that expired tokens are rejected with appropriate error message.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_get_subject_for_token_invalid">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_get_subject_for_token_invalid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_get_subject_for_token_invalid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_get_subject_for_token_invalid" title="Link to this definition"></a></dt>
+<dd><p>Test that invalid tokens are rejected with appropriate error message.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_get_subject_for_token_type_missing_sub">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_get_subject_for_token_type_missing_sub</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_get_subject_for_token_type_missing_sub"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_get_subject_for_token_type_missing_sub" title="Link to this definition"></a></dt>
+<dd><p>Test that tokens missing the subject field are rejected.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_get_subject_for_token_type_valid_confirmation">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_get_subject_for_token_type_valid_confirmation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">create_token_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_get_subject_for_token_type_valid_confirmation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_get_subject_for_token_type_valid_confirmation" title="Link to this definition"></a></dt>
+<dd><p>Test that token subject can be extracted correctly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>create_token_func</strong> – Function that creates the token</p></li>
+<li><p><strong>token_type</strong> – Type of the token to validate</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_get_subject_for_token_type_wrong_type">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_get_subject_for_token_type_wrong_type</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_get_subject_for_token_type_wrong_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_get_subject_for_token_type_wrong_type" title="Link to this definition"></a></dt>
+<dd><p>Test that tokens with incorrect type are rejected.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_get_user">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_get_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">registered_user_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_get_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_get_user" title="Link to this definition"></a></dt>
+<dd><p>Test that a registered user can be retrieved from the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>registered_user_fixture</strong> – Test user data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_get_user_not_found">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_get_user_not_found</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_get_user_not_found"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_get_user_not_found" title="Link to this definition"></a></dt>
+<dd><p>Test that get_user returns None for non-existent users.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_security.test_password_hashes">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_security.</span></span><span class="sig-name descname"><span class="pre">test_password_hashes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_security.html#test_password_hashes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_security.test_password_hashes" title="Link to this definition"></a></dt>
+<dd><p>Test that password hashing and verification work correctly.</p>
+</dd></dl>
+
+</section>
+<section id="module-storeapi.tests.test_tasks">
+<span id="background-tasks-tests"></span><h2>Background Tasks Tests<a class="headerlink" href="#module-storeapi.tests.test_tasks" title="Link to this heading"></a></h2>
+<p>Task module test suite.
+Tests email sending, image generation, and task processing functionality
+for the Store API application’s asynchronous tasks.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_tasks.mock_http_error_response">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_tasks.</span></span><span class="sig-name descname"><span class="pre">mock_http_error_response</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_tasks.html#mock_http_error_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_tasks.mock_http_error_response" title="Link to this definition"></a></dt>
+<dd><p>Fixture that provides a simulated HTTP 500 error response.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_tasks.test_generate_image_and_add_to_post_api_error">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_tasks.</span></span><span class="sig-name descname"><span class="pre">test_generate_image_and_add_to_post_api_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mock_create_engine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mock_send_email</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mock_generate_image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_tasks.html#test_generate_image_and_add_to_post_api_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_tasks.test_generate_image_and_add_to_post_api_error" title="Link to this definition"></a></dt>
+<dd><p>Test that verifies API error handling</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_tasks.test_generate_image_and_add_to_post_success">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_tasks.</span></span><span class="sig-name descname"><span class="pre">test_generate_image_and_add_to_post_success</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mock_create_engine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mock_send_email</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mock_generate_image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_tasks.html#test_generate_image_and_add_to_post_success"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_tasks.test_generate_image_and_add_to_post_success" title="Link to this definition"></a></dt>
+<dd><p>Test that verifies generate_image_and_add_to_post works properly</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_tasks.test_generate_image_and_add_to_post_with_existing_image">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_tasks.</span></span><span class="sig-name descname"><span class="pre">test_generate_image_and_add_to_post_with_existing_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mock_create_engine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mock_send_email</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mock_generate_image</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_tasks.html#test_generate_image_and_add_to_post_with_existing_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_tasks.test_generate_image_and_add_to_post_with_existing_image" title="Link to this definition"></a></dt>
+<dd><p>Test that verifies if the post already has an image, no new one is generated</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_tasks.test_generate_image_api_success">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_tasks.</span></span><span class="sig-name descname"><span class="pre">test_generate_image_api_success</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_tasks.html#test_generate_image_api_success"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_tasks.test_generate_image_api_success" title="Link to this definition"></a></dt>
+<dd><p>Test that verifies _generate_image_api works properly with Pollinations.ai</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_tasks.test_send_simple_email">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_tasks.</span></span><span class="sig-name descname"><span class="pre">test_send_simple_email</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_tasks.html#test_send_simple_email"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_tasks.test_send_simple_email" title="Link to this definition"></a></dt>
+<dd><p>Test that send_simple_email works correctly</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_tasks.test_send_simple_email_api_error">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_tasks.</span></span><span class="sig-name descname"><span class="pre">test_send_simple_email_api_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_tasks.html#test_send_simple_email_api_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_tasks.test_send_simple_email_api_error" title="Link to this definition"></a></dt>
+<dd><p>Test that send_simple_email handles API errors correctly</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.test_tasks.test_send_user_registration_email">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.test_tasks.</span></span><span class="sig-name descname"><span class="pre">test_send_user_registration_email</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/test_tasks.html#test_send_user_registration_email"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.test_tasks.test_send_user_registration_email" title="Link to this definition"></a></dt>
+<dd><p>Test that send_user_registration_email works correctly</p>
+</dd></dl>
+
+</section>
+<section id="module-storeapi.tests.routers.test_posts">
+<span id="router-tests"></span><h2>Router Tests<a class="headerlink" href="#module-storeapi.tests.routers.test_posts" title="Link to this heading"></a></h2>
+<p>Post router test module.
+Tests CRUD operations for posts, comments, and likes in the Store API.
+Verifies post creation, listing, sorting, commenting, and liking functionality.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.create_comment">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">create_comment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">post_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logged_in_token_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#create_comment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.create_comment" title="Link to this definition"></a></dt>
+<dd><p>Helper function to create a comment on a post.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>body</strong> – Text content of the comment</p></li>
+<li><p><strong>post_id</strong> – ID of the post to comment on</p></li>
+<li><p><strong>async_client_fixture</strong> – HTTP client for making requests</p></li>
+<li><p><strong>logged_in_token_fixture</strong> – Authentication token</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Created comment data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.create_post">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">create_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logged_in_token_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#create_post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.create_post" title="Link to this definition"></a></dt>
+<dd><p>Helper function to create a post.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>body</strong> – Text content of the post</p></li>
+<li><p><strong>async_client_fixture</strong> – HTTP client for making requests</p></li>
+<li><p><strong>logged_in_token_fixture</strong> – Authentication token</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Created post data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.created_comment_fixture">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">created_comment_fixture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created_post_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logged_in_token_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#created_comment_fixture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.created_comment_fixture" title="Link to this definition"></a></dt>
+<dd><p>Fixture that creates a test comment on a post.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>async_client_fixture</strong> – HTTP client for making requests</p></li>
+<li><p><strong>created_post_fixture</strong> – Post to comment on</p></li>
+<li><p><strong>logged_in_token_fixture</strong> – Authentication token</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Created comment data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.created_post_fixture">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">created_post_fixture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logged_in_token_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#created_post_fixture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.created_post_fixture" title="Link to this definition"></a></dt>
+<dd><p>Fixture that creates a test post.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>async_client_fixture</strong> – HTTP client for making requests</p></li>
+<li><p><strong>logged_in_token_fixture</strong> – Authentication token</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Created post data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.like_post">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">like_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">post_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logged_in_token_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#like_post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.like_post" title="Link to this definition"></a></dt>
+<dd><p>Helper function to like a post.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>post_id</strong> – ID of the post to like</p></li>
+<li><p><strong>async_client_fixture</strong> – HTTP client for making requests</p></li>
+<li><p><strong>logged_in_token_fixture</strong> – Authentication token</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Like data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.test_create_comment">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">test_create_comment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created_post_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confirmed_user_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logged_in_token_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#test_create_comment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.test_create_comment" title="Link to this definition"></a></dt>
+<dd><p>Test creating a comment on a post.</p>
+<p>Verifies that a comment can be created and the response contains expected fields.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.test_create_post">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">test_create_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confirmed_user_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logged_in_token_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#test_create_post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.test_create_post" title="Link to this definition"></a></dt>
+<dd><p>Test creating a new post.</p>
+<p>Verifies that a post can be created and the response contains expected fields.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.test_create_post_expired_token">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">test_create_post_expired_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confirmed_user_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mocker</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#test_create_post_expired_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.test_create_post_expired_token" title="Link to this definition"></a></dt>
+<dd><p>Test creating a post with an expired token.</p>
+<p>Verifies that the request is rejected with a 401 Unauthorized response.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.test_create_post_missing_data">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">test_create_post_missing_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logged_in_token_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#test_create_post_missing_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.test_create_post_missing_data" title="Link to this definition"></a></dt>
+<dd><p>Test creating a post with missing required data.</p>
+<p>Verifies that the request is rejected with a 422 Unprocessable Entity response.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.test_create_post_with_prompt">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">test_create_post_with_prompt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logged_in_token_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mocker</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#test_create_post_with_prompt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.test_create_post_with_prompt" title="Link to this definition"></a></dt>
+<dd><p>Test creating a post with an image generation prompt.</p>
+<p>Verifies that the image generation task is called with the correct parameters.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.test_get_all_posts">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">test_get_all_posts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created_post_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#test_get_all_posts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.test_get_all_posts" title="Link to this definition"></a></dt>
+<dd><p>Test retrieving all posts.</p>
+<p>Verifies that all posts can be retrieved and the response includes like counts.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.test_get_all_posts_sort_likes">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">test_get_all_posts_sort_likes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logged_in_token_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#test_get_all_posts_sort_likes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.test_get_all_posts_sort_likes" title="Link to this definition"></a></dt>
+<dd><p>Test sorting posts by like count.</p>
+<p>Verifies that posts are sorted by most likes when the ‘most_likes’ sorting is specified.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.test_get_all_posts_sorting">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">test_get_all_posts_sorting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logged_in_token_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sorting</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#test_get_all_posts_sorting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.test_get_all_posts_sorting" title="Link to this definition"></a></dt>
+<dd><p>Test sorting posts by creation time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sorting</strong> – Sort direction (‘new’ or ‘old’)</p></li>
+<li><p><strong>expected_order</strong> – Expected order of post IDs after sorting</p></li>
+</ul>
+</dd>
+</dl>
+<p>Verifies that posts are sorted as expected based on the sorting parameter.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.test_get_all_posts_wrong_sorting">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">test_get_all_posts_wrong_sorting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#test_get_all_posts_wrong_sorting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.test_get_all_posts_wrong_sorting" title="Link to this definition"></a></dt>
+<dd><p>Test using an invalid sorting parameter.</p>
+<p>Verifies that the request is rejected with a 422 Unprocessable Entity response.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.test_get_comments_on_post">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">test_get_comments_on_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created_post_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created_comment_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#test_get_comments_on_post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.test_get_comments_on_post" title="Link to this definition"></a></dt>
+<dd><p>Test retrieving comments for a specific post.</p>
+<p>Verifies that all comments for a post can be retrieved.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.test_get_comments_on_post_empty">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">test_get_comments_on_post_empty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created_post_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#test_get_comments_on_post_empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.test_get_comments_on_post_empty" title="Link to this definition"></a></dt>
+<dd><p>Test retrieving comments for a post that has no comments.</p>
+<p>Verifies that an empty list is returned when a post has no comments.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.test_get_missing_post_with_comments">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">test_get_missing_post_with_comments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#test_get_missing_post_with_comments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.test_get_missing_post_with_comments" title="Link to this definition"></a></dt>
+<dd><p>Test retrieving a non-existent post.</p>
+<p>Verifies that a 404 Not Found response is returned when a post doesn’t exist.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.test_get_post_with_comments">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">test_get_post_with_comments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created_post_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created_comment_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#test_get_post_with_comments"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.test_get_post_with_comments" title="Link to this definition"></a></dt>
+<dd><p>Test retrieving a post with its comments.</p>
+<p>Verifies that a post can be retrieved with its comments and like count.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_posts.test_like_post">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_posts.</span></span><span class="sig-name descname"><span class="pre">test_like_post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created_post_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logged_in_token_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_posts.html#test_like_post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_posts.test_like_post" title="Link to this definition"></a></dt>
+<dd><p>Test liking a post.</p>
+<p>Verifies that a like can be created and the response contains expected fields.</p>
+</dd></dl>
+
+<p id="module-storeapi.tests.routers.test_upload">Upload router test module.
+Tests file upload functionality including image uploads, temporary file handling,
+and integration with external storage services.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_upload.aiofiles_mock_open">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_upload.</span></span><span class="sig-name descname"><span class="pre">aiofiles_mock_open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mocker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_upload.html#aiofiles_mock_open"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_upload.aiofiles_mock_open" title="Link to this definition"></a></dt>
+<dd><p>Mock aiofiles.open to use the pyfakefs filesystem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mocker</strong> – pytest-mock fixture</p></li>
+<li><p><strong>fs</strong> – PyFakeFS fixture for file system operations</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mocked open function</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>MagicMock</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_upload.call_upload_endpoint">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_upload.</span></span><span class="sig-name descname"><span class="pre">call_upload_endpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_upload.html#call_upload_endpoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_upload.call_upload_endpoint" title="Link to this definition"></a></dt>
+<dd><p>Helper function to call the upload endpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>async_client_fixture</strong> – HTTP client for making requests</p></li>
+<li><p><strong>token</strong> – Authentication token</p></li>
+<li><p><strong>sample_image</strong> – Path to the image file to upload</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The HTTP response from the upload endpoint</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_upload.mock_b2_upload_file">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_upload.</span></span><span class="sig-name descname"><span class="pre">mock_b2_upload_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mocker</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_upload.html#mock_b2_upload_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_upload.mock_b2_upload_file" title="Link to this definition"></a></dt>
+<dd><p>Mock the B2 file upload functionality.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mocker</strong> – pytest-mock fixture</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mocked upload function</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>MagicMock</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_upload.sample_image">
+<span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_upload.</span></span><span class="sig-name descname"><span class="pre">sample_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_upload.html#sample_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_upload.sample_image" title="Link to this definition"></a></dt>
+<dd><p>Create a sample image file for testing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fs</strong> – PyFakeFS fixture for file system operations</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Path to the created sample image</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pathlib.Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_upload.test_temp_file_remove_after_upload">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_upload.</span></span><span class="sig-name descname"><span class="pre">test_temp_file_remove_after_upload</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logged_in_token_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mocker</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_upload.html#test_temp_file_remove_after_upload"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_upload.test_temp_file_remove_after_upload" title="Link to this definition"></a></dt>
+<dd><p>Test that temporary files are removed after upload.</p>
+<p>Verifies that the temporary file created during upload is properly cleaned up.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_upload.test_upload_image">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_upload.</span></span><span class="sig-name descname"><span class="pre">test_upload_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logged_in_token_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_upload.html#test_upload_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_upload.test_upload_image" title="Link to this definition"></a></dt>
+<dd><p>Test uploading an image file.</p>
+<p>Verifies that the image is uploaded successfully and the correct response is returned.</p>
+</dd></dl>
+
+<p id="module-storeapi.tests.routers.test_user">User router test module.
+Tests user registration, confirmation, and authentication functionality
+for the Store API application.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_user.register_user">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_user.</span></span><span class="sig-name descname"><span class="pre">register_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Response</span></span></span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_user.html#register_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_user.register_user" title="Link to this definition"></a></dt>
+<dd><p>Helper function to register a user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>async_client_fixture</strong> – HTTP client for making requests</p></li>
+<li><p><strong>email</strong> – User’s email address</p></li>
+<li><p><strong>password</strong> – User’s password</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>HTTP response from the registration endpoint</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_user.test_confirm_user">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_user.</span></span><span class="sig-name descname"><span class="pre">test_confirm_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mocker</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_user.html#test_confirm_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_user.test_confirm_user" title="Link to this definition"></a></dt>
+<dd><p>Test confirming a user’s registration.</p>
+<p>Verifies that a user can confirm their registration by following
+the confirmation URL sent via email.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_user.test_confirm_user_expired_token">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_user.</span></span><span class="sig-name descname"><span class="pre">test_confirm_user_expired_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mocker</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_user.html#test_confirm_user_expired_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_user.test_confirm_user_expired_token" title="Link to this definition"></a></dt>
+<dd><p>Test confirming registration with an expired token.</p>
+<p>Verifies that an expired confirmation token is rejected with the
+appropriate error message.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_user.test_confirm_user_invalid_token">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_user.</span></span><span class="sig-name descname"><span class="pre">test_confirm_user_invalid_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_user.html#test_confirm_user_invalid_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_user.test_confirm_user_invalid_token" title="Link to this definition"></a></dt>
+<dd><p>Test confirming registration with an invalid token.</p>
+<p>Verifies that an invalid confirmation token is rejected with the
+appropriate error message.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_user.test_login_user">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_user.</span></span><span class="sig-name descname"><span class="pre">test_login_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confirmed_user_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_user.html#test_login_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_user.test_login_user" title="Link to this definition"></a></dt>
+<dd><p>Test successful user login.</p>
+<p>Verifies that a confirmed user can log in successfully and receive
+an access token.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_user.test_login_user_not_confirmed">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_user.</span></span><span class="sig-name descname"><span class="pre">test_login_user_not_confirmed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registered_user_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_user.html#test_login_user_not_confirmed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_user.test_login_user_not_confirmed" title="Link to this definition"></a></dt>
+<dd><p>Test logging in with an unconfirmed user.</p>
+<p>Verifies that attempting to login with an unconfirmed account returns
+an unauthorized response with the appropriate error message.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_user.test_login_user_not_exists">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_user.</span></span><span class="sig-name descname"><span class="pre">test_login_user_not_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_user.html#test_login_user_not_exists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_user.test_login_user_not_exists" title="Link to this definition"></a></dt>
+<dd><p>Test logging in with a non-existent user.</p>
+<p>Verifies that attempting to login with a non-existent email returns
+an unauthorized response.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_user.test_register_user">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_user.</span></span><span class="sig-name descname"><span class="pre">test_register_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_user.html#test_register_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_user.test_register_user" title="Link to this definition"></a></dt>
+<dd><p>Test registering a new user.</p>
+<p>Verifies that a user can be registered successfully and the response
+contains the expected message.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="storeapi.tests.routers.test_user.test_register_user_already_exists">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">storeapi.tests.routers.test_user.</span></span><span class="sig-name descname"><span class="pre">test_register_user_already_exists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">async_client_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncClient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">registered_user_fixture</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/storeapi/tests/routers/test_user.html#test_register_user_already_exists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#storeapi.tests.routers.test_user.test_register_user_already_exists" title="Link to this definition"></a></dt>
+<dd><p>Test registering a user with an email that already exists.</p>
+<p>Verifies that attempting to register with an existing email returns
+a conflict response with the appropriate error message.</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="libs.html" class="btn btn-neutral float-left" title="Libraries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, David Toscano.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
