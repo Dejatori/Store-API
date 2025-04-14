@@ -8,7 +8,9 @@ from contextlib import asynccontextmanager
 from asgi_correlation_id import CorrelationIdMiddleware
 from fastapi import FastAPI, HTTPException
 from fastapi.exception_handlers import http_exception_handler
+import sentry_sdk
 
+from storeapi.config import config
 from storeapi.database import database
 from storeapi.logging_conf import configure_logging
 from storeapi.routers.post import router as posts_router
@@ -19,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 
 @asynccontextmanager
-async def lifespan(app_instance: FastAPI):
+async def lifespan(app_instance: FastAPI): # pylint: disable=unused-argument
     """
     Manages the startup and shutdown events of the FastAPI application.
     Connects to the database on startup and disconnects on shutdown.
@@ -33,6 +35,13 @@ async def lifespan(app_instance: FastAPI):
     yield
     await database.disconnect()
 
+
+sentry_sdk.init(
+    dsn=config.SENTRY_DSN,
+    # Add data like request headers and IP for users,
+    # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
+    send_default_pii=True,
+)
 
 app = FastAPI(lifespan=lifespan)
 
