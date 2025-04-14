@@ -3,6 +3,8 @@ pydantic-settings~=2.6.1
 uvicorn[standard]
 sqlalchemy~=2.0.37
 databases[aiosqlite]~=0.9.0
+databases[asyncpg]
+psycopg2-binary
 python-dotenv
 httpx~=0.28.1
 rich
