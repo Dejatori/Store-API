@@ -14,12 +14,16 @@ from passlib.context import CryptContext
 
 from storeapi.database import database, user_table
 
+import bcrypt
+if not hasattr(bcrypt, '__about__'):
+    bcrypt.__about__ = type('about', (object,), {'__version__': bcrypt.__version__})
+
 logger = logging.getLogger(__name__)
 
 SECRET_KEY = "YtcZBBQ05bp4g2iYHLPlhTTfcV1yZJryiNK3Ry1ixMg="
 ALGORITHM = "HS256"
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-pwd_context = CryptContext(schemes=["bcrypt"])
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 def create_credentials_exception(detail: str) -> HTTPException:

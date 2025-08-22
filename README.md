@@ -26,8 +26,8 @@ Project from the "Mastering REST APIs with FastAPI" course by Packt, edited by D
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/Mastering-REST-APIs-with-FastAPI.git
-   cd Mastering-REST-APIs-with-FastAPI
+   git clone https://github.com/Dejatori/Store-API.git
+   cd Store-API
    ```
 
 2. Create a virtual environment and install dependencies:

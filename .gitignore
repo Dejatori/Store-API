@@ -7,7 +7,7 @@ __pycache__/
 .env
 *.db
 .venv
+venv
 .idea/
 .vscode/
-*.png
 *.log
